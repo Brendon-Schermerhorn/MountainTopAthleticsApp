@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountaintop Athletics | Premium Coaching</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.8); border-radius: 10px;}
+        ::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.8); border-radius: 10px; border: 2px solid #020617; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(16, 185, 129, 1); }
+
+        .bg-app-main {
+            background-color: #020617;
+            background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.98)), url('https://images.unsplash.com/photo-1542224566-6e85f2e10715?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 0 0 rgba(0, 0, 0, 0.5), 0 15px 30px rgba(0,0,0,0.8); border-radius: 1.5rem;
+        }
+
+        .bg-hero-texture {
+            background-image: linear-gradient(to right bottom, rgba(16, 185, 129, 0.3), rgba(2, 6, 23, 0.95)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; background-position: center 30%;
+        }
+
+        .bg-pitch-hero {
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; background-position: center;
+        }
+
+        .btn-3d { border: 3px solid rgba(255,255,255,0.2); border-bottom-width: 6px; transition: all 0.1s ease; cursor: pointer; }
+        .btn-3d:active { border-bottom-width: 3px; transform: translateY(3px); }
+        .btn-3d-emerald { border-color: #047857; border-bottom-color: #064e3b; background-color: #10b981; color: #fff; }
+        .btn-3d-sky { border-color: #0369a1; border-bottom-color: #0c4a6e; background-color: #0ea5e9; color: #fff; }
+        .btn-3d-amber { border-color: #b45309; border-bottom-color: #78350f; background-color: #f59e0b; color: #fff; }
+        .btn-3d-rose { border-color: #9f1239; border-bottom-color: #881337; background-color: #e11d48; color: #fff; }
+        .btn-3d-purple { border-color: #6b21a8; border-bottom-color: #4c1d95; background-color: #a855f7; color: #fff; }
+
+        input[type="text"], input[type="password"], input[type="number"], input[type="email"], select, textarea {
+            border: 2px solid rgba(255,255,255,0.1); border-bottom-width: 4px; background: rgba(0,0,0,0.6); transition: all 0.2s; color: white;
+        }
+        input:focus, select:focus, textarea:focus { border-color: #10b981; border-bottom-color: #047857; outline: none; }
+
+        .vault-locked { filter: blur(8px) grayscale(100%); pointer-events: none; user-select: none; transition: all 0.5s ease;}
+        .vault-unlocked { filter: blur(0px) grayscale(0%); pointer-events: auto; user-select: auto; transition: all 0.5s ease;}
+        .set-row-checked { opacity: 0.5; background: rgba(16, 185, 129, 0.1); transition: all 0.3s; }
+        
+        @keyframes pulseGlow {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .animate-peak { animation: pulseGlow 2s infinite; }
+    </style>
+</head>
+<body class="bg-app-main text-slate-100 min-h-screen flex flex-col pb-20">
+
+    <!-- Global Floating Navigation -->
+    <nav class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-2xl border-b-4 border-slate-800 shadow-2xl" id="global-nav">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="goHome()">
+                <div class="p-2 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl border-b-4 border-teal-800 shadow-lg">
+                    <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-3-4-6-8h18l-6 8-3 4z"></path></svg>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-black uppercase drop-shadow-lg tracking-[2px]">Mountaintop<span class="text-emerald-400">Athletics</span></h1>
+            </div>
+            <div id="nav-actions" class="hidden flex items-center space-x-4">
+                <button onclick="goBack()" id="btn-back" class="hidden px-4 py-2 bg-slate-800 hover:bg-slate-700 border-2 border-slate-600 border-b-4 rounded-xl font-black active:translate-y-[2px]">&larr; Back</button>
+                <button onclick="openGlobalSettingsModal()" class="p-2 bg-slate-800 hover:bg-slate-700 border-2 border-slate-600 rounded-full transition-colors shadow-md" title="Settings & Team">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </button>
+                <div class="w-12 h-12 rounded-full border-4 border-emerald-500 overflow-hidden cursor-pointer" onclick="openGlobalSettingsModal()">
+                    <img id="nav-avatar" src="" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <button onclick="logout()" class="px-5 py-2 bg-rose-600 hover:bg-rose-500 border-2 border-rose-800 border-b-4 rounded-xl font-black hidden md:block active:translate-y-[2px]">Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 flex-1 flex flex-col relative z-10" id="main-container">
+        
+        <!-- LOGIN -->
+        <div id="auth-view" class="m-auto w-full max-w-md relative">
+            <div class="glass-panel p-8 relative overflow-hidden mb-4 border-t-8 border-t-emerald-500">
+                <div class="text-center mb-8">
+                    <h2 class="text-5xl font-black text-white uppercase tracking-widest drop-shadow-lg">Basecamp</h2>
+                    <p class="text-emerald-300 text-sm mt-3 font-bold uppercase tracking-wider">Secure Staff & Client Portal</p>
+                </div>
+                <form onsubmit="event.preventDefault(); attemptLogin();" class="space-y-6">
+                    <input type="text" id="login-user" required class="w-full p-4 rounded-xl text-center font-bold" placeholder="Username / Email">
+                    <input type="password" id="login-pass" required class="w-full p-4 rounded-xl text-center font-bold" placeholder="Password">
+                    <p id="login-error" class="text-rose-400 text-sm hidden font-black bg-rose-950/80 p-3 rounded-lg border-2 border-rose-500/50 text-center uppercase">Incorrect credentials.</p>
+                    <button type="submit" class="w-full py-4 mt-4 btn-3d btn-3d-emerald font-black rounded-xl text-lg uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.3)]">Access Portal</button>
+                </form>
+            </div>
+        </div>
+        <!-- COACH DASHBOARD (OVERVIEW) -->
+        <div id="coach-overview" class="hidden space-y-10">
+            <div class="glass-panel p-10 border-4 border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-slate-900 to-slate-800 relative overflow-hidden">
+                <div class="relative z-10">
+                    <p class="text-emerald-400 font-black tracking-widest uppercase text-sm mb-2 drop-shadow-md" id="coach-dashboard-role">Coach Dashboard</p>
+                    <h2 class="text-5xl font-black text-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]" id="coach-dashboard-greeting">Altitude Overview</h2>
+                </div>
+                <button onclick="navigateTo('coach-analytics-view')" class="relative z-10 mt-6 md:mt-0 px-6 py-4 btn-3d btn-3d-emerald text-sm uppercase tracking-widest font-black rounded-xl shadow-xl flex items-center">
+                    📊 Revenue Analytics
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-6 border-l-8 border-l-emerald-500"><p class="text-slate-300 text-sm tracking-widest uppercase font-black drop-shadow">Monthly Revenue</p><p class="text-5xl font-black text-white mt-4 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" id="stat-revenue">$0</p></div>
+                <div class="glass-panel p-6 border-l-8 border-l-sky-500"><p class="text-slate-300 text-sm tracking-widest uppercase font-black drop-shadow">Active Climbers</p><p class="text-5xl font-black text-white mt-4 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" id="stat-members">0</p></div>
+                <div class="glass-panel p-6 border-l-8 border-l-amber-500"><p class="text-slate-300 text-sm tracking-widest uppercase font-black drop-shadow">Avg Adherence</p><p class="text-5xl font-black text-white mt-4 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" id="stat-adherence">0%</p></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div class="glass-panel p-8 flex flex-col justify-between border-t-8 border-t-sky-500"><h3 class="text-2xl font-black text-white mb-2">Gym CMS</h3><p class="text-slate-300 text-sm mb-8 font-bold">Design and manage master workout templates.</p><button onclick="navigateTo('coach-protocol-library')" class="w-full py-4 btn-3d btn-3d-sky rounded-xl text-sm font-black uppercase tracking-widest">Enter Gym &rarr;</button></div>
+                <div class="glass-panel p-8 flex flex-col justify-between border-t-8 border-t-amber-500"><h3 class="text-2xl font-black text-white mb-2">Recipe Kitchen</h3><p class="text-slate-300 text-sm mb-8 font-bold">Build your database of custom meals and macros.</p><button onclick="navigateTo('coach-recipe-library')" class="w-full py-4 btn-3d btn-3d-amber rounded-xl text-sm font-black uppercase tracking-widest">Enter Kitchen &rarr;</button></div>
+                <div class="glass-panel p-8 flex flex-col justify-between border-t-8 border-t-rose-500"><h3 class="text-2xl font-black text-white mb-2">Reminders</h3><p class="text-slate-300 text-sm mb-8 font-bold">Manage global daily habits and nudges.</p><button onclick="navigateTo('coach-reminder-library')" class="w-full py-4 btn-3d btn-3d-rose rounded-xl text-sm font-black uppercase tracking-widest">Manage Alerts &rarr;</button></div>
+                <div class="glass-panel p-8 flex flex-col justify-between border-t-8 border-t-purple-500"><h3 class="text-2xl font-black text-white mb-2">Comms</h3><p class="text-slate-300 text-sm mb-8 font-bold">Monitor adherence and message clients directly.</p><div class="flex flex-col space-y-3"><button onclick="navigateTo('coach-adherence-view')" class="w-full py-3 btn-3d btn-3d-emerald rounded-xl text-xs font-black uppercase tracking-widest">Tracking</button><button onclick="navigateTo('messages-view')" class="w-full py-3 btn-3d btn-3d-purple rounded-xl text-xs font-black uppercase tracking-widest">Messages</button></div></div>
+            </div>
+
+            <!-- Roster -->
+            <div class="glass-panel overflow-hidden flex flex-col">
+                <div class="p-8 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center">
+                    <h3 class="font-black text-2xl text-white drop-shadow-md">Active Climbers</h3>
+                    <div class="flex space-x-3">
+                        <button onclick="navigateTo('coach-pitch-page')" class="btn-3d btn-3d-sky px-6 py-2 rounded-xl text-sm font-black uppercase tracking-widest">Pitch Deck</button>
+                        <button onclick="openOnboardingModal()" class="btn-3d btn-3d-emerald px-6 py-2 rounded-xl text-sm font-black uppercase tracking-widest hidden" id="btn-new-client">+ New Client</button>
+                    </div>
+                </div>
+                <div class="overflow-y-auto max-h-[500px] p-4 bg-slate-950/40">
+                    <table class="w-full text-left border-collapse">
+                        <tbody id="roster-table-body" class="space-y-4 block"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- COACH ADHERENCE ANALYTICS VIEW -->
+        <div id="coach-adherence-view" class="hidden space-y-8">
+            <div class="glass-panel p-8 flex flex-col md:flex-row justify-between items-center border-t-8 border-t-rose-500">
+                <div><h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Adherence Engine</h2><p class="text-rose-400 mt-2 font-bold uppercase tracking-widest">Compliance & Intervention Monitor</p></div>
+            </div>
+            <div class="glass-panel overflow-hidden">
+                <div class="p-8 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-2xl text-white drop-shadow-md">Climber Compliance Report</h3><p class="text-slate-400 text-sm mt-2 font-bold">Clients falling below 65% require immediate intervention.</p></div>
+                <div class="p-6 bg-slate-950/40 space-y-4" id="adherence-list"></div>
+            </div>
+        </div>
+
+        <!-- MESSAGING SYSTEM VIEW -->
+        <div id="messages-view" class="hidden space-y-8 h-[80vh]">
+            <div class="glass-panel w-full h-full flex overflow-hidden border-4 border-slate-800 border-t-8 border-t-purple-500">
+                <div id="msg-sidebar" class="w-1/3 border-r-4 border-slate-800 bg-slate-900/80 flex flex-col">
+                    <div class="p-6 border-b-4 border-slate-800"><h3 class="font-black text-xl text-white uppercase tracking-widest">Inbox</h3></div>
+                    <div class="flex-1 overflow-y-auto p-4 space-y-2" id="msg-client-list"></div>
+                </div>
+                <div class="flex-1 flex flex-col bg-slate-950/60 relative">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/90 flex items-center space-x-4">
+                        <img id="msg-header-avatar" src="" class="w-12 h-12 rounded-full border-2 border-emerald-500 object-cover">
+                        <div><h3 id="msg-header-name" class="font-black text-xl text-white drop-shadow-md">Select a Chat</h3><p id="msg-header-status" class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Online</p></div>
+                    </div>
+                    <div id="msg-history" class="flex-1 overflow-y-auto p-6 space-y-6"></div>
+                    <div class="p-4 bg-slate-900 border-t-4 border-slate-800">
+                        <form onsubmit="sendChatMessage(event)" class="flex space-x-4">
+                            <input type="text" id="chat-input" required class="flex-1 p-4 rounded-xl text-white font-bold" placeholder="Type a message...">
+                            <button type="submit" class="px-8 btn-3d btn-3d-purple rounded-xl text-sm font-black uppercase tracking-widest">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- COACH ANALYTICS VIEW (BUSINESS SCALING TRACKER) -->
+        <div id="coach-analytics-view" class="hidden space-y-8">
+            <div class="glass-panel p-8 flex flex-col md:flex-row justify-between items-center border-t-8 border-t-emerald-500">
+                <div><h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Revenue Analytics</h2><p class="text-emerald-400 mt-2 font-bold uppercase tracking-widest">Financial Projection Board</p></div>
+                <div class="mt-6 md:mt-0 flex items-center space-x-4 bg-slate-900/80 p-3 rounded-2xl border-4 border-slate-800 shadow-inner">
+                    <label class="text-slate-400 font-black uppercase text-xs tracking-widest">Timeframe:</label>
+                    <select id="chart-timeframe" onchange="renderChart()" class="bg-slate-800 text-white font-black p-2 rounded-xl focus:border-emerald-500 outline-none">
+                        <option value="3">3 Months</option><option value="6">6 Months</option><option value="12" selected>12 Months</option><option value="18">18 Months</option><option value="24">24 Months</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 glass-panel p-6 h-[500px]"><canvas id="revenueChart"></canvas></div>
+                <div class="lg:col-span-1 glass-panel p-6 border-t-8 border-t-purple-500">
+                    <h3 class="font-black text-2xl text-white uppercase tracking-widest mb-4 border-b-4 border-slate-800 pb-2">Stream Distribution</h3>
+                    <p class="text-slate-400 font-bold text-sm mb-6">Current breakdown of active membership scaling tiers:</p>
+                    <ul class="space-y-4" id="revenue-sources-breakdown"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- GYM CMS -->
+        <div id="coach-protocol-library" class="hidden space-y-8">
+            <h2 class="text-5xl font-black text-white drop-shadow-lg">Master Protocols</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Templates</h3></div>
+                    <div id="saved-protocols-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-emerald-400 text-xl drop-shadow-md uppercase tracking-widest" id="builder-header-title">Build New Protocol</h3><button id="btn-cancel-edit" onclick="cancelEdit()" class="hidden text-xs bg-rose-600 border-b-4 border-rose-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel Edit</button></div>
+                    <form onsubmit="event.preventDefault(); saveNewProtocol();" class="flex flex-col flex-1">
+                        <div class="p-8 border-b-4 border-slate-800 bg-slate-950/80 space-y-4">
+                            <input type="text" id="builder-protocol-name" class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500" placeholder="Protocol Name">
+                            <div class="flex flex-col space-y-3 bg-slate-900 p-4 rounded-2xl border-4 border-slate-800 shadow-inner">
+                                <input type="text" id="ex-search" oninput="filterExercises()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addExerciseToBuilder(); }" class="w-full p-3 rounded-xl text-emerald-300 font-bold bg-slate-950/50 placeholder-slate-500 focus:border-emerald-500" placeholder="Search target muscles...">
+                                <div class="flex space-x-4"><select id="builder-ex-select" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addExerciseToBuilder(); }" class="flex-1 p-3 rounded-xl text-white font-bold bg-slate-800 focus:border-emerald-500"></select><button type="button" onclick="addExerciseToBuilder()" class="px-8 btn-3d btn-3d-emerald rounded-xl text-sm font-black uppercase tracking-widest">Add</button></div>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 overflow-y-auto space-y-4 bg-slate-950/40" id="builder-staging-list"></div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-protocol" class="w-full py-5 btn-3d btn-3d-sky rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(14,165,233,0.2)]">Save Protocol</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- KITCHEN CMS -->
+        <div id="coach-recipe-library" class="hidden space-y-8">
+            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">The Kitchen (Recipes)</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex flex-col space-y-3"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Meals</h3><input type="text" id="kitchen-master-search" oninput="renderRecipeLibrary()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); }" placeholder="Search diets/targets (keto, paleo...)" class="w-full p-3 rounded-xl text-amber-300 font-bold bg-slate-950/50 placeholder-slate-500"></div>
+                    <div id="saved-recipes-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-amber-400 text-xl drop-shadow-md uppercase tracking-widest" id="recipe-header-title">Create New Recipe</h3><button id="btn-cancel-recipe-edit" onclick="cancelRecipeEdit()" class="hidden text-xs bg-rose-600 border-b-4 border-rose-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel Edit</button></div>
+                    <form onsubmit="event.preventDefault(); saveRecipe();" class="flex-1 flex flex-col overflow-hidden">
+                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
+                            <input type="text" id="recipe-name" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500" placeholder="Recipe Name (e.g. Alpine Oats)">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Calories</label><input type="number" id="recipe-cal" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Protein (g)</label><input type="number" id="recipe-pro" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Carbs (g)</label><input type="number" id="recipe-carb" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Fats (g)</label><input type="number" id="recipe-fat" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                            </div>
+                            <textarea id="recipe-desc" rows="4" class="w-full p-4 rounded-xl font-bold placeholder-slate-500 focus:border-amber-500" placeholder="Instructions..."></textarea>
+                        </div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-recipe" class="w-full py-5 btn-3d btn-3d-amber rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">Save Recipe to Kitchen</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- REMINDERS CMS -->
+        <div id="coach-reminder-library" class="hidden space-y-8">
+            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Reminder Library</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Reminders</h3></div>
+                    <div id="saved-reminders-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-rose-400 text-xl drop-shadow-md uppercase tracking-widest" id="reminder-header-title">Create New Reminder</h3><button id="btn-cancel-reminder-edit" onclick="cancelReminderEdit()" class="hidden text-xs bg-slate-600 border-b-4 border-slate-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel</button></div>
+                    <form onsubmit="event.preventDefault(); saveReminder();" class="flex-1 flex flex-col overflow-hidden">
+                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
+                            <label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Reminder Text</label>
+                            <input type="text" id="reminder-text" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500 focus:border-rose-500" placeholder="e.g. Submit Weekly Photos">
+                        </div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-reminder" class="w-full py-5 btn-3d btn-3d-rose rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.2)]">Save Reminder</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- KITCHEN CMS -->
+        <div id="coach-recipe-library" class="hidden space-y-8">
+            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">The Kitchen (Recipes)</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex flex-col space-y-3"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Meals</h3><input type="text" id="kitchen-master-search" oninput="renderRecipeLibrary()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); }" placeholder="Search diets/targets (keto, paleo...)" class="w-full p-3 rounded-xl text-amber-300 font-bold bg-slate-950/50 placeholder-slate-500"></div>
+                    <div id="saved-recipes-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-amber-400 text-xl drop-shadow-md uppercase tracking-widest" id="recipe-header-title">Create New Recipe</h3><button id="btn-cancel-recipe-edit" onclick="cancelRecipeEdit()" class="hidden text-xs bg-rose-600 border-b-4 border-rose-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel Edit</button></div>
+                    <form onsubmit="event.preventDefault(); saveRecipe();" class="flex-1 flex flex-col overflow-hidden">
+                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
+                            <input type="text" id="recipe-name" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500" placeholder="Recipe Name (e.g. Alpine Oats)">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Calories</label><input type="number" id="recipe-cal" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Protein (g)</label><input type="number" id="recipe-pro" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Carbs (g)</label><input type="number" id="recipe-carb" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Fats (g)</label><input type="number" id="recipe-fat" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
+                            </div>
+                            <textarea id="recipe-desc" rows="4" class="w-full p-4 rounded-xl font-bold placeholder-slate-500 focus:border-amber-500" placeholder="Instructions..."></textarea>
+                        </div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-recipe" class="w-full py-5 btn-3d btn-3d-amber rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">Save Recipe to Kitchen</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- REMINDERS CMS -->
+        <div id="coach-reminder-library" class="hidden space-y-8">
+            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Reminder Library</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Reminders</h3></div>
+                    <div id="saved-reminders-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-rose-400 text-xl drop-shadow-md uppercase tracking-widest" id="reminder-header-title">Create New Reminder</h3><button id="btn-cancel-reminder-edit" onclick="cancelReminderEdit()" class="hidden text-xs bg-slate-600 border-b-4 border-slate-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel</button></div>
+                    <form onsubmit="event.preventDefault(); saveReminder();" class="flex-1 flex flex-col overflow-hidden">
+                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
+                            <label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Reminder Text</label>
+                            <input type="text" id="reminder-text" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500 focus:border-rose-500" placeholder="e.g. Submit Weekly Photos">
+                        </div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-reminder" class="w-full py-5 btn-3d btn-3d-rose rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.2)]">Save Reminder</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- COACH CLIENT DEEP FILE VIEW -->
+        <div id="coach-client-detail" class="hidden space-y-8">
+            <div class="glass-panel p-8 flex justify-between items-center bg-card-texture shadow-2xl border-4 border-emerald-500/30 border-t-8 border-t-emerald-500">
+                <div class="flex items-center space-x-8">
+                    <img id="detail-client-avatar" src="" alt="Avatar" class="w-24 h-24 rounded-full border-4 border-emerald-500 object-cover shadow-[0_0_20px_rgba(16,185,129,0.5)]">
+                    <div>
+                        <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" id="detail-client-name"></h2>
+                        <div class="flex space-x-4 mt-4">
+                            <span class="text-slate-900 font-black bg-emerald-400 px-5 py-1.5 rounded-xl text-sm shadow-[0_4px_0_0_rgba(4,120,87,1)] uppercase tracking-widest" id="detail-client-tier"></span>
+                            <span class="text-slate-900 font-black bg-amber-400 px-5 py-1.5 rounded-xl text-sm shadow-[0_4px_0_0_rgba(180,83,9,1)] uppercase tracking-widest" id="detail-client-billing"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="sendNudge()" class="px-6 py-4 btn-3d btn-3d-sky rounded-xl text-white font-black text-sm uppercase tracking-widest flex items-center">🔔 Send Nudge</button>
+                    <button onclick="openEditClientModal()" class="px-6 py-4 btn-3d bg-slate-800 border-slate-600 border-b-slate-800 hover:bg-slate-700 rounded-xl text-white font-black text-sm uppercase tracking-widest flex items-center hidden" id="btn-edit-client">✏️ Edit</button>
+                    <button onclick="goBack()" class="px-6 py-4 btn-3d bg-slate-800 border-slate-600 border-b-slate-800 hover:bg-slate-700 rounded-xl text-white font-black text-sm uppercase tracking-widest flex items-center">&larr; Roster</button>
+                </div>
+            </div>
+
+            <!-- SIMULATED SECURE VAULT ROW -->
+            <div class="relative overflow-hidden glass-panel p-6 border-l-8 border-l-rose-500 shadow-2xl" id="vault-container">
+                <div id="vault-overlay" class="absolute inset-0 z-20 bg-slate-900/80 backdrop-blur-sm flex flex-col items-center justify-center border-4 border-rose-500/50 rounded-xl transition-all">
+                    <h4 class="text-rose-400 font-black tracking-widest uppercase mb-2 drop-shadow-md flex items-center"><svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Encrypted Vault Locked</h4>
+                    <p class="text-slate-300 text-xs font-bold mb-4">Enter Coach PIN to decrypt and view sensitive biometrics.</p>
+                    <div class="flex space-x-2">
+                        <input type="password" id="vault-pin-input" maxlength="4" placeholder="****" class="w-32 p-3 rounded-lg bg-black/80 text-rose-400 text-center font-black tracking-[0.7em] border-2 border-rose-500/50 focus:border-rose-400 outline-none">
+                        <button onclick="decryptVault()" class="px-6 bg-rose-600 text-white font-black rounded-lg uppercase text-xs tracking-widest shadow-md hover:bg-rose-500 transition-colors border-b-4 border-rose-800 active:border-b-0 active:translate-y-1">Unlock</button>
+                    </div>
+                </div>
+
+                <div id="vault-data" class="grid grid-cols-2 md:grid-cols-4 gap-6 vault-locked">
+                    <div><p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Adherence</p><p class="text-3xl font-black text-white mt-1 drop-shadow" id="detail-client-adherence"></p></div>
+                    <div><p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Current Streak</p><p class="text-3xl font-black text-white mt-1 drop-shadow" id="detail-client-streak"></p></div>
+                    <div><p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Weight / BF%</p><p class="text-3xl font-black text-white mt-1 drop-shadow" id="detail-client-weight"></p></div>
+                    <div><p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Primary Goal</p><p class="text-2xl font-black text-emerald-400 mt-1 truncate drop-shadow" id="detail-client-goal"></p></div>
+                </div>
+            </div>
+
+            <div class="flex space-x-4 border-b-4 border-slate-800 pb-2 pt-2">
+                <button id="tab-btn-training" onclick="switchClientDetailTab('training')" class="px-8 py-3 bg-slate-800 text-emerald-400 font-black rounded-t-2xl border-t-4 border-l-4 border-r-4 border-slate-700 uppercase tracking-widest text-sm transition-colors">Training Calendar</button>
+                <button id="tab-btn-plan" onclick="switchClientDetailTab('plan')" class="px-8 py-3 bg-slate-900 text-slate-500 hover:text-white font-black rounded-t-2xl uppercase tracking-widest text-sm transition-colors">Custom Plan</button>
+                <button id="tab-btn-nutrition" onclick="switchClientDetailTab('nutrition')" class="px-8 py-3 bg-slate-900 text-slate-500 hover:text-white font-black rounded-t-2xl uppercase tracking-widest text-sm transition-colors">Nutrition & Diet Plan</button>
+            </div>
+            <!-- TRAINING TAB (Coach View) -->
+            <div id="detail-tab-training" class="glass-panel overflow-hidden">
+                <div class="p-8 border-b-4 border-slate-800 bg-slate-900/80 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                    <h3 class="font-black text-3xl text-white drop-shadow-md uppercase tracking-widest">Trail Calendar</h3>
+                    <div class="flex space-x-2 bg-slate-950/80 p-2 rounded-xl border-2 border-slate-700 shadow-inner">
+                        <button onclick="changeMonth(-1)" class="p-2 hover:bg-slate-800 rounded-lg text-white font-black transition-colors">&larr;</button>
+                        <span id="calendar-month-year" class="px-6 py-2 font-black text-emerald-400 uppercase tracking-widest text-sm bg-slate-900 rounded-lg"></span>
+                        <button onclick="changeMonth(1)" class="p-2 hover:bg-slate-800 rounded-lg text-white font-black transition-colors">&rarr;</button>
+                    </div>
+                </div>
+                <div class="p-8 bg-slate-950/40">
+                    <div class="grid grid-cols-7 gap-3 text-center text-xs font-black text-slate-500 uppercase tracking-widest mb-4"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+                    <div id="coach-calendar-grid" class="grid grid-cols-7 gap-3"></div>
+                </div>
+            </div>
+
+            <!-- CUSTOM PLAN TAB -->
+            <div id="detail-tab-plan" class="hidden grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Personal Protocols</h3></div>
+                    <div id="client-saved-protocols-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
+                </div>
+                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
+                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center">
+                        <h3 class="font-black text-sky-400 text-xl drop-shadow-md uppercase tracking-widest" id="client-builder-header-title">Build Custom Protocol</h3>
+                        <button id="btn-cancel-client-edit" onclick="cancelClientEdit()" class="hidden text-xs bg-rose-600 border-b-4 border-rose-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest active:translate-y-1 active:border-b-0">Cancel Edit</button>
+                    </div>
+                    <form onsubmit="event.preventDefault(); saveClientProtocol();" class="flex flex-col flex-1">
+                        <div class="p-8 border-b-4 border-slate-800 bg-slate-950/80 space-y-4">
+                            <input type="text" id="client-builder-protocol-name" class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500" placeholder="Protocol Name">
+                            <div class="flex flex-col space-y-3 bg-slate-900 p-4 rounded-2xl border-4 border-slate-800 shadow-inner">
+                                <input type="text" id="client-ex-search" oninput="filterClientExercises()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addExerciseToClientBuilder(); }" class="w-full p-3 rounded-xl text-sky-300 font-bold bg-slate-950/50 placeholder-slate-500 focus:border-sky-500" placeholder="Search target muscles...">
+                                <div class="flex space-x-4"><select id="client-builder-ex-select" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addExerciseToClientBuilder(); }" class="flex-1 p-3 rounded-xl text-white font-bold bg-slate-800 focus:border-sky-500"></select><button type="button" onclick="addExerciseToClientBuilder()" class="px-8 btn-3d btn-3d-sky rounded-xl text-sm font-black uppercase tracking-widest">Add</button></div>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 overflow-y-auto space-y-4 bg-slate-950/40" id="client-builder-staging-list"></div>
+                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-client-protocol" class="w-full py-5 btn-3d btn-3d-emerald rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.2)]">Save to Client Library</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- NUTRITION TAB -->
+            <div id="detail-tab-nutrition" class="hidden space-y-8">
+                <div class="glass-panel p-8 border-t-8 border-t-amber-500">
+                    <h3 class="font-black text-2xl text-white drop-shadow-md mb-6 uppercase tracking-widest">Macro Targets</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Daily Calories</label><input type="number" id="tgt-cal" class="w-full p-4 rounded-xl text-white font-bold focus:border-amber-500" onchange="updateClientMacros()"></div>
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Protein (g)</label><input type="number" id="tgt-pro" class="w-full p-4 rounded-xl text-white font-bold focus:border-amber-500" onchange="updateClientMacros()"></div>
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Carbs (g)</label><input type="number" id="tgt-carb" class="w-full p-4 rounded-xl text-white font-bold focus:border-amber-500" onchange="updateClientMacros()"></div>
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Fats (g)</label><input type="number" id="tgt-fat" class="w-full p-4 rounded-xl text-white font-bold focus:border-amber-500" onchange="updateClientMacros()"></div>
+                    </div>
+                </div>
+
+                <div class="glass-panel flex flex-col h-[650px]">
+                    <div class="p-8 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center">
+                        <h3 class="font-black text-2xl text-white drop-shadow-md uppercase tracking-widest">Current Diet Plan</h3>
+                        <button onclick="autoSuggestMeals()" class="px-6 py-3 btn-3d btn-3d-amber text-white text-xs font-black uppercase tracking-widest rounded-xl flex items-center shadow-[0_0_15px_rgba(245,158,11,0.2)]">✨ Auto-Suggest</button>
+                    </div>
+                    <div class="p-6 bg-slate-900/80 border-b-4 border-slate-800 flex flex-col space-y-4">
+                        <input type="text" id="recipe-search" oninput="filterDietDropdown()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addMealToClient(); }" class="w-full p-3 rounded-xl text-amber-300 font-bold bg-slate-950/50 border border-slate-600 placeholder-slate-500 focus:border-amber-500" placeholder="Search diets (keto, paleo) and press Enter...">
+                        <div class="flex space-x-4"><select id="diet-recipe-select" onkeydown="if(event.key === 'Enter') { event.preventDefault(); addMealToClient(); }" class="flex-1 p-4 rounded-xl font-bold bg-slate-800 text-white cursor-pointer focus:border-amber-500"></select><button onclick="addMealToClient()" class="px-8 btn-3d border-slate-600 border-b-slate-800 bg-slate-700 hover:bg-slate-600 text-white font-black uppercase tracking-widest rounded-xl text-sm">Add Meal</button></div>
+                    </div>
+                    <div class="flex-1 overflow-y-auto p-8 space-y-4 bg-slate-950/40" id="detail-client-diet-list"></div>
+                </div>
+            </div>
+        </div>
+        <!-- PITCH DECK -->
+        <div id="coach-pitch-page" class="hidden space-y-8">
+            <div class="bg-pitch-hero rounded-[2rem] p-12 border-4 border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px]"></div>
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <p class="text-emerald-400 font-black tracking-widest uppercase text-sm mb-4 drop-shadow-md">Mountaintop Athletics</p>
+                    <h2 class="text-5xl md:text-7xl font-black text-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] leading-tight">Choose Your Ascent</h2>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-slate-500 hover:border-slate-400 transition-colors cursor-pointer"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide">Basecamp</h3><p class="text-emerald-400 font-black text-xl mt-2">$79.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-slate-200">✅ One-time Custom Buildout.</span></li></ul></div>
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.2)]"><div class="absolute top-0 right-0 bg-emerald-500 text-slate-900 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-bl-xl">Most Popular</div><div class="mb-6"><h3 class="text-4xl font-black text-white drop-shadow-md uppercase tracking-wide text-emerald-300">Ascent Hybrid</h3><p class="text-emerald-400 font-black text-2xl mt-2">$199.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-black text-sm text-white">🔥 Monthly Dynamic Modifications.</span></li></ul></div>
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-amber-500 hover:border-amber-400 transition-colors cursor-pointer"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide text-amber-300">Summit VIP 1-on-1</h3><p class="text-emerald-400 font-black text-xl mt-2">$349.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-amber-100">👑 Elite Concierge Digital Coaching.</span></li></ul></div>
+            </div>
+        </div>
+
+        <!-- CLIENT PORTAL DASHBOARD -->
+        <div id="client-view" class="hidden max-w-5xl mx-auto w-full space-y-8">
+            <div class="bg-hero-texture p-10 rounded-[2rem] border-4 border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden">
+                <div class="relative z-10 flex items-center space-x-8 mb-6 md:mb-0">
+                    <div class="w-28 h-28 rounded-full border-4 border-emerald-500 overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                        <img id="client-greeting-avatar" src="" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <p class="text-emerald-400 font-black tracking-widest uppercase text-sm mb-2 drop-shadow-md">Mountaintop App</p>
+                        <h2 class="text-5xl md:text-6xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]" id="client-greeting-name"></h2>
+                        <p class="text-slate-900 text-sm mt-4 font-black bg-emerald-400 inline-block px-5 py-2 rounded-xl shadow-[0_4px_0_0_rgba(4,120,87,1)] uppercase tracking-widest">Tier: <span id="client-greeting-tier"></span></p>
+                    </div>
+                </div>
+                <div class="relative z-10 text-left md:text-right glass-panel p-6 rounded-2xl shadow-2xl w-full md:w-auto border-2 border-amber-500/50">
+                    <p class="text-amber-400 text-xs uppercase font-black tracking-widest mb-2 drop-shadow">Current Streak</p>
+                    <p class="text-5xl font-black text-white flex items-center md:justify-end drop-shadow-md">
+                        <span id="client-greeting-streak" class="mr-3"></span> <span class="text-amber-400 drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]">🏔️</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex space-x-2 md:space-x-4 mb-4">
+                <button id="client-tab-btn-training" onclick="switchClientPortalTab('training')" class="flex-1 py-4 btn-3d btn-3d-emerald font-black uppercase tracking-widest rounded-xl text-xs md:text-sm">Training</button>
+                <button id="client-tab-btn-nutrition" onclick="switchClientPortalTab('nutrition')" class="flex-1 py-4 bg-slate-900 border-2 border-slate-700 border-b-4 text-slate-500 font-black uppercase tracking-widest rounded-xl hover:text-white transition-all text-xs md:text-sm active:border-b-2 active:translate-y-1">Nutrition</button>
+                <button id="client-tab-btn-progress" onclick="switchClientPortalTab('progress')" class="flex-1 py-4 bg-slate-900 border-2 border-slate-700 border-b-4 text-slate-500 font-black uppercase tracking-widest rounded-xl hover:text-white transition-all text-xs md:text-sm active:border-b-2 active:translate-y-1">Progress</button>
+                <button id="client-tab-btn-messages" onclick="switchClientPortalTab('messages')" class="flex-1 py-4 bg-slate-900 border-2 border-slate-700 border-b-4 text-slate-500 font-black uppercase tracking-widest rounded-xl hover:text-white transition-all text-xs md:text-sm active:border-b-2 active:translate-y-1">Messages</button>
+            </div>
+
+            <!-- CLIENT TRAINING TAB -->
+            <div id="client-tab-training" class="space-y-8">
+                <div class="glass-panel p-8 border-t-8 border-t-amber-500 shadow-2xl">
+                    <h3 class="text-2xl font-black text-white mb-6 flex items-center drop-shadow-md uppercase tracking-widest"><span class="p-2 bg-amber-500 rounded-xl text-slate-900 mr-4 shadow-[0_4px_0_0_rgba(180,83,9,1)]"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></span>Trail Forecast</h3>
+                    <div id="client-7day-view" class="flex overflow-x-auto space-x-5 pb-4 hide-scrollbar snap-x"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 glass-panel p-8 border-t-8 border-t-sky-500 shadow-2xl">
+                        <div class="flex justify-between items-end pb-6 mb-6 border-b-4 border-slate-800">
+                            <div><p class="text-sky-400 font-black uppercase tracking-widest text-sm mb-2 drop-shadow">Today's Mission</p><h3 class="text-4xl font-black text-white drop-shadow-md uppercase tracking-wide" id="client-todays-title">Loading...</h3></div>
+                            <div class="flex space-x-3">
+                                <button id="btn-build-wod" onclick="openWodBuilder()" class="px-6 py-4 btn-3d btn-3d-purple font-black uppercase tracking-widest rounded-xl text-sm shadow-[0_0_20px_rgba(168,85,247,0.3)]">Build WOD</button>
+                                <button id="btn-start-workout" onclick="startActiveWorkout()" class="hidden px-8 py-4 btn-3d btn-3d-emerald font-black uppercase tracking-widest rounded-xl text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-pulse">Begin Workout</button>
+                            </div>
+                        </div>
+                        <div id="client-workout-list" class="space-y-5"></div>
+                    </div>
+                    <div class="glass-panel p-8 h-fit sticky top-28 border-t-8 border-t-emerald-500 shadow-2xl">
+                        <div class="w-16 h-16 bg-emerald-500 text-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-[0_6px_0_0_rgba(4,120,87,1)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                        <h3 class="text-3xl font-black text-white mb-2 drop-shadow-md uppercase tracking-widest">Log Ascent</h3>
+                        <div class="space-y-8 mt-8">
+                            <div><input type="range" id="client-workout" min="0" max="100" value="0" class="w-full accent-emerald-500 h-4 bg-slate-900 rounded-xl appearance-none cursor-pointer shadow-inner border-2 border-slate-700"><div class="flex justify-between text-sm text-slate-400 mt-4 font-black"><span>0%</span><span id="workout-val" class="text-emerald-400 text-2xl drop-shadow">0%</span></div></div>
+                            <button onclick="submitClientData()" class="w-full py-5 btn-3d btn-3d-emerald text-white font-black uppercase tracking-widest rounded-xl text-lg">Submit Check-In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLIENT NUTRITION TAB -->
+            <div id="client-tab-nutrition" class="hidden space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 glass-panel p-8 border-t-8 border-t-amber-500 shadow-2xl">
+                        <h3 class="text-3xl font-black text-white drop-shadow-md mb-8 uppercase tracking-widest">Daily Macros</h3>
+                        <div class="space-y-8" id="client-macro-bars"></div>
+                    </div>
+                    <div class="glass-panel p-8 border-t-8 border-t-blue-500 flex flex-col items-center justify-center text-center shadow-2xl">
+                        <div class="w-20 h-20 bg-blue-500 text-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-[0_6px_0_0_rgba(29,78,216,1)] border-2 border-blue-400"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 14c0 4.418-3.582 8-8 8s-8-3.582-8-8c0-4.418 5-11 8-11s8 6.582 8 11z"></path></svg></div>
+                        <h3 class="text-2xl font-black text-white drop-shadow-md mb-2 uppercase tracking-widest">Hydration</h3>
+                        <div class="flex items-end justify-center space-x-3 my-6"><span class="text-7xl font-black text-blue-400 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]" id="client-water-val">0</span><button onclick="toggleWaterUnit()" class="text-lg font-black bg-slate-800 border-2 border-slate-600 border-b-4 px-4 py-2 rounded-xl text-slate-300 hover:text-white transition-all active:border-b-2 active:translate-y-1" id="client-water-unit">oz</button></div>
+                        <div class="flex space-x-2 mt-2 w-full"><input type="number" id="custom-water-amt" placeholder="Amt..." class="flex-1 p-3 rounded-xl bg-slate-900 border-2 border-slate-700 text-white font-bold"><button onclick="logCustomWater()" class="px-6 btn-3d btn-3d-sky rounded-xl font-black text-sm">Add</button></div>
+                        <button onclick="logWater(0, true)" class="mt-6 w-full py-3 bg-slate-900 border-2 border-slate-700 border-b-4 text-slate-500 hover:text-rose-400 font-black rounded-xl uppercase tracking-widest text-xs active:border-b-2 active:translate-y-1">Reset Daily Intake</button>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 shadow-2xl">
+                    <h3 class="text-3xl font-black text-white drop-shadow-md mb-2 uppercase tracking-widest">Today's Diet Plan</h3>
+                    <p class="text-base text-slate-400 font-bold mb-8">Journal your meals and snap photos to update your macros.</p>
+                    <div id="client-diet-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                </div>
+            </div>
+            <!-- CLIENT PROGRESS / MEASUREMENTS TAB -->
+            <div id="client-tab-progress" class="hidden space-y-8">
+                <div class="glass-panel p-8 border-t-8 border-t-emerald-500 shadow-2xl">
+                    <h3 class="text-3xl font-black text-white drop-shadow-md mb-8 uppercase tracking-widest">Biometrics & Progress</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Height</label><input type="text" id="prog-height" class="w-full p-4 rounded-xl text-white font-bold" placeholder="e.g. 5'10&quot;"></div>
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Current Weight (lbs)</label><input type="number" id="prog-weight" class="w-full p-4 rounded-xl text-white font-bold focus:border-emerald-500" placeholder="lbs"></div>
+                        <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Body Fat %</label><input type="number" id="prog-bf" class="w-full p-4 rounded-xl text-white font-bold focus:border-emerald-500" placeholder="%"></div>
+                        <div class="flex items-end"><button onclick="logProgress()" class="w-full py-4 btn-3d btn-3d-sky text-white font-black uppercase tracking-widest rounded-xl text-sm">Log Entry</button></div>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border-4 border-slate-800 h-[400px]"><canvas id="clientProgressChart"></canvas></div>
+                </div>
+            </div>
+
+            <!-- CLIENT MESSAGING TAB -->
+            <div id="client-tab-messages" class="hidden">
+                 <div class="glass-panel w-full h-[600px] flex overflow-hidden border-4 border-purple-500 shadow-2xl border-t-8">
+                    <div class="flex-1 flex flex-col bg-slate-950/60 relative">
+                        <div class="p-6 border-b-4 border-slate-800 bg-slate-900/90 flex items-center space-x-4">
+                            <img src="https://ui-avatars.com/api/?name=Coach&background=020617&color=0EA5E9&rounded=true&bold=true" class="w-12 h-12 rounded-full border-2 border-emerald-500 object-cover" id="client-msg-coach-avatar">
+                            <div><h3 class="font-black text-xl text-white drop-shadow-md" id="client-msg-coach-name">Coach Brendon Schermerhorn</h3><p class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Online</p></div>
+                        </div>
+                        <div id="client-msg-history" class="flex-1 overflow-y-auto p-6 space-y-6"></div>
+                        <div class="p-4 bg-slate-900 border-t-4 border-slate-800">
+                            <form onsubmit="sendChatMessage(event)" class="flex space-x-4">
+                                <input type="text" id="client-chat-input" required class="flex-1 p-4 rounded-xl text-white font-bold focus:border-purple-500" placeholder="Send a message to your coach...">
+                                <button type="submit" class="px-8 btn-3d btn-3d-purple rounded-xl text-sm font-black uppercase tracking-widest">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- CLOSES main-container -->
+
+    <!-- SETTINGS & TEAM MANAGEMENT MODAL -->
+    <div id="settings-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[60] flex items-center justify-center px-4 py-8 overflow-y-auto">
+        <div class="glass-panel p-0 max-w-4xl w-full border-4 border-emerald-500 relative shadow-[0_0_30px_rgba(16,185,129,0.2)] overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+            
+            <!-- Settings Sidebar -->
+            <div class="w-full md:w-1/3 bg-slate-900/80 border-b-4 md:border-b-0 md:border-r-4 border-slate-800 p-6 flex flex-col space-y-2">
+                <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-widest drop-shadow-md">Settings</h3>
+                <button onclick="switchSettingsTab('profile')" id="btn-set-profile" class="text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest bg-emerald-600 text-white transition-colors">👤 My Profile</button>
+                <button onclick="switchSettingsTab('preferences')" id="btn-set-prefs" class="text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">⚙️ App Prefs</button>
+                <button onclick="switchSettingsTab('team')" id="btn-set-team" class="hidden text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">🛡️ Team Mgmt</button>
+            </div>
+
+            <!-- Settings Content Area -->
+            <div class="w-full md:w-2/3 p-8 bg-slate-950/60 max-h-[80vh] overflow-y-auto">
+                
+                <!-- Tab: My Profile -->
+                <form id="settings-form-profile" onsubmit="saveSettings(event)" class="space-y-5">
+                    <div id="settings-tab-profile">
+                        <div class="flex flex-col items-center mb-6">
+                            <label class="relative cursor-pointer w-32 h-32 rounded-full border-4 border-emerald-500 overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.5)] group">
+                                <img id="settings-avatar-preview" src="" alt="Preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                                    <svg class="w-8 h-8 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                    <span class="text-white text-[10px] font-black uppercase tracking-widest">Change</span>
+                                </div>
+                                <input type="file" accept="image/*" class="hidden" onchange="previewImageUpload(event, 'settings-avatar-preview')">
+                            </label>
+                        </div>
+                        <div><label class="block text-xs font-black text-slate-300 uppercase mb-2 ml-1">Full Name</label><input type="text" id="settings-username" required class="w-full p-4 rounded-xl text-white font-bold focus:border-emerald-500"></div>
+                        <div id="settings-email-container" class="mt-4"><label class="block text-xs font-black text-slate-300 uppercase mb-2 ml-1">Email Address</label><input type="email" id="settings-email" required class="w-full p-4 rounded-xl text-white font-bold focus:border-emerald-500"></div>
+                        <div class="mt-4"><label class="block text-xs font-black text-slate-300 uppercase mb-2 ml-1">Update Password</label><input type="password" id="settings-password" class="w-full p-4 rounded-xl text-white font-bold focus:border-emerald-500" placeholder="Leave blank to keep current"></div>
+                    </div>
+
+                    <!-- Tab: App Preferences -->
+                    <div id="settings-tab-preferences" class="hidden space-y-6">
+                        <h4 class="text-white font-black uppercase text-xl border-b-4 border-slate-800 pb-2">Global App Preferences</h4>
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-4 border-slate-700 shadow-inner flex justify-between items-center">
+                            <div><h4 class="text-white font-black uppercase text-sm">Two-Factor Auth</h4><p class="text-[10px] text-slate-400 font-bold mt-1">Require code on login</p></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" id="settings-2fa" class="sr-only peer"><div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div></label>
+                        </div>
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-4 border-slate-700 shadow-inner flex justify-between items-center">
+                            <div><h4 class="text-white font-black uppercase text-sm">Push Notifications</h4><p class="text-[10px] text-slate-400 font-bold mt-1">Alerts for messages & habits</p></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" id="settings-push" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div></label>
+                        </div>
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-4 border-slate-700 shadow-inner">
+                            <h4 class="text-white font-black uppercase text-sm mb-3">Measurement Units</h4>
+                            <div class="flex space-x-4">
+                                <label class="flex-1 flex items-center space-x-2 cursor-pointer bg-black/40 p-3 rounded-xl border border-slate-600"><input type="radio" name="unit_weight" value="lbs" checked class="accent-emerald-500 w-4 h-4"><span class="text-xs font-black text-slate-300 uppercase">Imperial (lbs)</span></label>
+                                <label class="flex-1 flex items-center space-x-2 cursor-pointer bg-black/40 p-3 rounded-xl border border-slate-600"><input type="radio" name="unit_weight" value="kg" class="accent-emerald-500 w-4 h-4"><span class="text-xs font-black text-slate-300 uppercase">Metric (kg)</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shared Action Buttons for Profile & Preferences -->
+                    <div id="settings-actions" class="flex space-x-4 pt-6 border-t-4 border-slate-800 mt-6">
+                        <button type="button" onclick="closeModal('settings-modal')" class="flex-1 py-4 bg-slate-800 border-2 border-slate-600 border-b-4 hover:bg-slate-700 text-white font-black rounded-xl active:border-b-2 active:translate-y-1">Cancel</button>
+                        <button type="submit" class="flex-1 py-4 btn-3d btn-3d-emerald text-slate-900 font-black rounded-xl uppercase tracking-widest">Save Settings</button>
+                    </div>
+                </form>
+
+                <!-- Tab: Team Management (Admin Only, Separate Form) -->
+                <div id="settings-tab-team" class="hidden space-y-6">
+                    <h4 class="text-white font-black uppercase text-xl border-b-4 border-slate-800 pb-2">Active Coach Roster</h4>
+                    <div id="admin-coach-list" class="space-y-3 mb-6 max-h-[250px] overflow-y-auto pr-2 hide-scrollbar"></div>
+                    
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border-4 border-amber-500 shadow-inner">
+                        <h4 class="text-amber-400 font-black uppercase text-sm mb-4 tracking-widest drop-shadow flex items-center"><svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg> Hire & Onboard Coach</h4>
+                        <form onsubmit="event.preventDefault(); adminOnboardCoach();" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">First Name</label><input type="text" id="admin-coach-first" required class="w-full p-3 rounded-xl text-white font-bold bg-black/50 border-slate-600 focus:border-amber-500"></div>
+                                <div><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Last Name</label><input type="text" id="admin-coach-last" required class="w-full p-3 rounded-xl text-white font-bold bg-black/50 border-slate-600 focus:border-amber-500"></div>
+                            </div>
+                            <div><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Employee Email</label><input type="email" id="admin-coach-email" required class="w-full p-3 rounded-xl text-white font-bold bg-black/50 border-slate-600 focus:border-amber-500"></div>
+                            <div><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Temporary Password</label><input type="text" id="admin-coach-pass" required class="w-full p-3 rounded-xl text-white font-bold bg-black/50 border-slate-600 focus:border-amber-500"></div>
+                            <div class="flex space-x-4">
+                                <div class="flex-1"><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Certifications</label><input type="text" id="admin-coach-cert" placeholder="NASM, CSCS..." required class="w-full p-3 rounded-xl text-white font-bold bg-black/50 border-slate-600 focus:border-amber-500"></div>
+                                <div class="w-1/3"><label class="block text-[10px] font-black text-slate-400 uppercase mb-1 ml-1">Vault PIN</label><input type="text" id="admin-coach-pin" required pattern="[0-9]{4}" maxlength="4" placeholder="0000" class="w-full p-3 rounded-xl text-amber-400 font-black text-center tracking-[0.5em] bg-black/50 border-amber-500/50 focus:border-amber-400 outline-none"></div>
+                            </div>
+                            <button type="submit" class="w-full py-4 btn-3d btn-3d-amber text-slate-900 font-black rounded-xl uppercase tracking-widest mt-2 shadow-[0_0_15px_rgba(245,158,11,0.2)]">Add Coach to Team</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- WOD BUILDER MODAL -->
+    <div id="wod-builder-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[70] flex items-center justify-center px-4">
+        <div class="glass-panel p-8 max-w-lg w-full border-4 border-purple-500 relative flex flex-col h-[80vh] shadow-[0_0_40px_rgba(168,85,247,0.2)]">
+            <h3 class="text-2xl font-black text-white mb-4 uppercase tracking-widest text-center border-b-4 border-slate-800 pb-4">Build Custom WOD</h3>
+            <p class="text-center text-purple-400 font-bold mb-4 uppercase tracking-widest" id="wod-target-date"></p>
+            <div class="flex flex-col md:flex-row gap-2 mb-4">
+                <input type="text" id="wod-ex-search" oninput="filterWodExercises()" class="flex-1 p-3 rounded-xl bg-slate-900 border-2 border-slate-700 text-white font-bold focus:border-purple-500" placeholder="Search movements...">
+                <select id="wod-ex-select" class="flex-1 p-3 rounded-xl bg-slate-800 text-white font-bold border-2 border-slate-700 focus:border-purple-500"></select>
+                <button type="button" onclick="addWodExercise()" class="px-6 py-3 btn-3d btn-3d-purple rounded-xl font-black uppercase tracking-widest">Add</button>
+            </div>
+            <div id="wod-staging-list" class="flex-1 overflow-y-auto space-y-3 mb-6 bg-slate-950/40 p-4 rounded-xl border-2 border-slate-800 shadow-inner"></div>
+            <div class="flex space-x-4">
+                <button type="button" onclick="closeModal('wod-builder-modal')" class="flex-1 py-4 bg-slate-800 hover:bg-slate-700 border-2 border-slate-600 border-b-4 rounded-xl text-white font-black uppercase text-xs tracking-widest active:translate-y-1 active:border-b-2">Cancel</button>
+                <button type="button" onclick="saveWod()" class="flex-1 py-4 btn-3d btn-3d-emerald rounded-xl text-white font-black uppercase text-xs tracking-widest">Save WOD</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVE WORKOUT ENGINE -->
+    <div id="active-workout-view" class="hidden fixed inset-0 z-[60] bg-app-main flex flex-col overflow-hidden">
+        <div class="p-6 border-b-4 border-slate-800 bg-slate-900/90 flex justify-between items-center shadow-2xl z-20 relative">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md" id="active-workout-title">Workout Mode</h2>
+                <div class="flex items-center space-x-2 mt-1">
+                    <span class="w-3 h-3 bg-rose-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(244,63,94,0.8)]"></span>
+                    <span class="text-rose-400 font-black font-mono text-xl tracking-widest drop-shadow" id="global-workout-timer">00:00:00</span>
+                </div>
+            </div>
+            <button onclick="endActiveWorkout()" class="px-6 py-4 btn-3d btn-3d-emerald text-sm font-black uppercase tracking-widest rounded-xl">End Workout</button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 pb-32" id="active-workout-list"></div>
+        <div class="absolute bottom-8 right-8 z-30 flex flex-col items-end">
+            <button onclick="toggleTimerModal()" class="w-16 h-16 rounded-full btn-3d btn-3d-sky flex items-center justify-center shadow-[0_0_20px_rgba(14,165,233,0.5)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></button>
+        </div>
+    </div>
+
+    <!-- REST TIMER MODAL -->
+    <div id="timer-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[70] flex flex-col items-center justify-center px-4">
+        <div class="text-center w-full max-w-md">
+            <h2 class="text-8xl font-black text-sky-400 mb-8 font-mono tracking-widest drop-shadow-[0_0_20px_rgba(14,165,233,0.6)]" id="timer-display">00:00</h2>
+            <div id="timer-controls" class="grid grid-cols-2 gap-4 mb-8">
+                <button onclick="startRestTimer(30)" class="py-4 btn-3d bg-slate-800 border-slate-600 text-white font-black text-lg rounded-xl uppercase">30 Sec</button>
+                <button onclick="startRestTimer(60)" class="py-4 btn-3d bg-slate-800 border-slate-600 text-white font-black text-lg rounded-xl uppercase">1 Min</button>
+                <button onclick="startRestTimer(120)" class="py-4 btn-3d bg-slate-800 border-slate-600 text-white font-black text-lg rounded-xl uppercase">2 Min</button>
+                <button onclick="startRestTimer(180)" class="py-4 btn-3d bg-slate-800 border-slate-600 text-white font-black text-lg rounded-xl uppercase">3 Min</button>
+                <button onclick="startRestTimer(300)" class="col-span-2 py-4 btn-3d bg-slate-800 border-slate-600 text-white font-black text-lg rounded-xl uppercase">5 Min</button>
+            </div>
+            <div class="flex space-x-4">
+                <button onclick="cancelRestTimer()" class="flex-1 py-4 btn-3d bg-rose-600 border-rose-800 text-white font-black rounded-xl uppercase tracking-widest hidden" id="btn-cancel-timer">Stop Timer</button>
+                <button onclick="toggleTimerModal()" class="flex-1 py-4 bg-slate-800 border-2 border-slate-600 border-b-4 hover:bg-slate-700 text-white font-black rounded-xl uppercase tracking-widest" id="btn-close-timer">Close Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RPE RATING MODAL -->
+    <div id="workout-rpe-modal" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[80] flex items-center justify-center px-4">
+        <div class="glass-panel p-10 max-w-lg w-full border-4 border-amber-500 relative overflow-hidden text-center shadow-[0_0_40px_rgba(245,158,11,0.2)]">
+            <h3 class="text-4xl font-black text-white mb-2 uppercase tracking-widest drop-shadow-md">Rate Your Ascent</h3>
+            <p class="text-slate-300 font-bold mb-10">Drag to rank the intensity of your session.</p>
+            <div class="mb-12 relative h-32 flex justify-center items-end"><h2 id="rpe-number" class="text-7xl font-black text-amber-400 font-mono drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">5</h2></div>
+            <p id="rpe-desc" class="text-2xl font-black text-white mb-8 uppercase tracking-widest drop-shadow-md text-amber-300">Alpine Ascent</p>
+            <input type="range" id="rpe-slider" min="1" max="10" value="5" oninput="updateRPEText(this.value)" class="w-full accent-amber-500 h-6 bg-slate-900 rounded-xl appearance-none cursor-pointer shadow-inner border-2 border-slate-700 mb-10">
+            <button onclick="submitWorkout()" class="w-full py-5 btn-3d btn-3d-amber text-slate-900 font-black uppercase tracking-widest rounded-xl text-xl shadow-[0_0_30px_rgba(245,158,11,0.3)]">Complete Ascent</button>
+        </div>
+    </div>
+
+    <!-- CELEBRATION OVERLAY -->
+    <div id="celebration-overlay" class="hidden fixed inset-0 bg-emerald-950/95 backdrop-blur-2xl z-[90] flex flex-col items-center justify-center pointer-events-none">
+        <div id="celebration-content" class="text-center opacity-0 scale-50 transition-all duration-700 transform"><div class="text-[120px] drop-shadow-[0_0_50px_rgba(16,185,129,0.8)] mb-6 animate-peak">🏔️</div><h1 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-emerald-200 to-emerald-500 uppercase tracking-widest drop-shadow-2xl">Summit<br>Conquered</h1></div>
+    </div>
+
+    <!-- WORKOUT SUMMARY PAGE -->
+    <div id="workout-summary-view" class="hidden fixed inset-0 z-[65] bg-app-main flex flex-col overflow-y-auto">
+        <div class="container mx-auto px-4 py-12 max-w-4xl flex-1 flex flex-col justify-center">
+            <div class="glass-panel p-10 border-4 border-emerald-500 shadow-[0_20px_50px_rgba(16,185,129,0.2)] text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-emerald-900/20"></div>
+                <div class="relative z-10">
+                    <p class="text-emerald-400 font-black tracking-widest uppercase text-sm mb-4">Expedition Report</p>
+                    <h2 class="text-5xl md:text-6xl font-black text-white drop-shadow-md mb-10 uppercase tracking-widest" id="summary-title">Workout Summary</h2>
+                    <div class="grid grid-cols-2 gap-6 mb-10">
+                        <div class="bg-slate-900/80 p-6 rounded-2xl border-4 border-slate-800 shadow-inner"><p class="text-slate-400 text-xs font-black uppercase tracking-widest mb-2">Total Time</p><p class="text-4xl font-mono font-black text-white drop-shadow" id="summary-time">00:00</p></div>
+                        <div class="bg-slate-900/80 p-6 rounded-2xl border-4 border-slate-800 shadow-inner"><p class="text-slate-400 text-xs font-black uppercase tracking-widest mb-2">Total Volume</p><p class="text-4xl font-mono font-black text-sky-400 drop-shadow" id="summary-volume">0 lbs</p></div>
+                    </div>
+                    <div id="summary-prs" class="mb-10 space-y-4"></div>
+                    <button onclick="closeSummary()" class="w-full py-5 btn-3d btn-3d-emerald text-white font-black uppercase tracking-widest rounded-xl text-xl">Return to Basecamp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const defaultSmiley = "https://ui-avatars.com/api/?name=Climber&background=020617&color=10B981&rounded=true&bold=true";
+        const defaultCoach = "https://ui-avatars.com/api/?name=Coach&background=020617&color=0EA5E9&rounded=true&bold=true";
+
+        let currentUserId = null; let selectedClientId = null; let activeChatUserId = null; let activeView = 'auth-view'; let viewHistory = [];
+        let isMasterAdmin = false;
+        
+        // --- MASTER ADMIN CONFIGURATION ---
+        let adminUser = { 
+            id: 'admin',
+            name: "Brendon Schermerhorn", 
+            username: "admin", 
+            email: "brendon@mountaintopathletics.com", 
+            password: "scale", 
+            pin: "2026", // Master Vault Key
+            twoFactor: false, 
+            profilePic: defaultCoach
+        };
+
+        // --- SUB-COACHES ARRAY (RBAC) ---
+        let coaches = [];
+
+        const exerciseLibrary = []; let savedProtocols = []; let recipeLibrary = [];
+        let reminderLibrary = [
+            { id: 'rem_1', text: 'Drink 100oz Water' },
+            { id: 'rem_2', text: 'Submit Weekly Photos' },
+            { id: 'rem_3', text: 'Morning Walk 20m' }
+        ];
+        let editingReminderId = null;
+
+        function expandLibraries() {
+            const equipments = ['Cable', 'Kettlebell', 'Bodyweight', 'Machine', 'EZ Bar', 'Resistance Band', 'Barbell', 'Dumbbell'];
+            const targets = [
+                {n:'Pause Rep Bench Press', r:'4x8', d:'Pause for 1 second at the chest to eliminate momentum.', tags: ['chest', 'push', 'upper body', 'pecs', 'bench', 'mechanical tension']}, 
+                {n:'Hand Release Pushups', r:'4x15', d:'Lift hands off the floor at the bottom of the movement to reset tension.', tags: ['chest', 'push', 'bodyweight', 'pecs', 'core']},
+                {n:'Bent-Over Row', r:'4x8', d:'Hinge at hips, pull to lower ribs.', tags: ['back', 'pull', 'upper body', 'lats', 'row']},
+                {n:'Lateral Raise', r:'4x15', d:'Lead with elbows, parallel to floor.', tags: ['shoulders', 'delts', 'upper body', 'push', 'raise', 'metabolic stress']}, 
+                {n:'Preacher Curl', r:'3x12', d:'Fix arms flat to pad for isolation.', tags: ['biceps', 'arms', 'pull', 'curl', 'hypertrophy']},
+                {n:'Back Squat', r:'4x6', d:'Drive knees out, break parallel.', tags: ['legs', 'quads', 'glutes', 'lower body', 'squat', 'mechanical tension']},
+                {n:'Romanian Deadlift', r:'3x10', d:'Slide down shins, flat back.', tags: ['legs', 'hamstrings', 'glutes', 'back', 'lower body', 'rdl']}, 
+                {n:'Walking Lunge', r:'3x12/leg', d:'Step clean, track shin vertically.', tags: ['legs', 'quads', 'glutes', 'lower body', 'lunge', 'bikini']},
+                {n:'Cable Crossover', r:'3x15', d:'Squeeze hard at center contraction.', tags: ['chest', 'pecs', 'push', 'fly', 'metabolic stress']}
+            ];
+            
+            // Explicitly add the exact master movements first
+            exerciseLibrary.push({ id: 'e_01', type: 'Barbell', name: 'Pause Rep Bench Press', defReps: '4x8', desc: 'Pause for 1 second at the chest to eliminate momentum.', tags: ['chest', 'push', 'bench'] });
+            exerciseLibrary.push({ id: 'e_02', type: 'Bodyweight', name: 'Hand Release Pushups', defReps: '4x15', desc: 'Lift hands off the floor at the bottom of the movement.', tags: ['chest', 'push', 'bodyweight'] });
+
+            let exId = 3;
+            while(exerciseLibrary.length < 100) {
+                let eq = equipments[Math.floor(Math.random() * equipments.length)]; let tg = targets[Math.floor(Math.random() * targets.length)];
+                if(tg.n === 'Hand Release Pushups' || tg.n === 'Pause Rep Bench Press') continue; 
+                let name = `${eq} ${tg.n} Var ${Math.floor(Math.random()*100)}`;
+                if(!exerciseLibrary.find(e => e.name === name)) { exerciseLibrary.push({ id: 'e_gen_' + exId++, type: eq.includes('Bodyweight') ? 'Bodyweight' : eq.includes('Machine') ? 'Machine' : eq.includes('Cable') ? 'Cable' : 'Free Weight', name: name, defReps: tg.r, desc: tg.d, tags: tg.tags }); }
+            }
+
+            savedProtocols.push({ id: 'p_1', name: 'Mountaintop Power Circuit', exercises: [{ exId: 'e_01', customReps: '4 x 8' }, { exId: 'e_02', customReps: '4 x 15' }] });
+
+            let recId = 1;
+            const proteins = [{n:'Chicken Breast', p:40, f:3}, {n:'Flank Steak', p:35, f:14}, {n:'Salmon', p:32, f:18}, {n:'Turkey', p:38, f:6}, {n:'Tofu', p:22, f:10}, {n:'Whey', p:48, f:2}];
+            const carbs = [{n:'Rice', c:45, f:1}, {n:'Sweet Potato', c:35, f:0}, {n:'Oats', c:48, f:4}, {n:'Pasta', c:55, f:2}, {n:'Mixed Berries', c:20, f:0}];
+            const fats = [{n:'Avocado', c:4, f:14}, {n:'Almonds', c:5, f:15}, {n:'Olive Oil', c:0, f:14}, {n:'Peanut Butter', c:6, f:16}];
+            const methods = ['Grilled', 'Baked', 'Roasted', 'Pan-Seared'];
+
+            while(recipeLibrary.length < 250) {
+                let pro = proteins[Math.floor(Math.random() * proteins.length)]; let carb = carbs[Math.floor(Math.random() * carbs.length)]; let fat = fats[Math.floor(Math.random() * fats.length)]; let met = methods[Math.floor(Math.random() * methods.length)];
+                let name = `${met} ${pro.n} with ${carb.n} & ${fat.n} v${Math.floor(Math.random()*100)}`;
+                if(!recipeLibrary.find(r => r.name === name)) {
+                    let totalP = pro.p + Math.floor(Math.random()*5); let totalC = carb.c + fat.c + Math.floor(Math.random()*8); let totalF = pro.f + carb.f + fat.f + Math.floor(Math.random()*4); let totalCal = (totalP * 4) + (totalC * 4) + (totalF * 9);
+                    let tags = [];
+                    if(totalC < 25) tags.push('keto'); if(totalC < 45) tags.push('low carb'); if(totalP > 42) tags.push('high protein');
+                    if(carb.n === 'Sweet Potato' || carb.n === 'Mixed Berries') tags.push('paleo'); 
+                    if(pro.n === 'Tofu') tags.push('vegan', 'vegetarian');
+                    tags.push(pro.n.toLowerCase(), carb.n.toLowerCase(), fat.n.toLowerCase());
+                    recipeLibrary.push({ id: 'r_gen_' + recId++, name: name, cal: totalCal, pro: totalP, carb: totalC, fat: totalF, desc: `Combine ${pro.n}, ${carb.n}, and ${fat.n}. Prepare using the ${met.toLowerCase()} method.`, tags: tags });
+                }
+            }
+        }
+        expandLibraries();
+
+        let builderStaging = []; let editingProtocolId = null; let editingRecipeId = null;
+        let wodStaging = []; let wodTargetDate = "";
+
+        let currentDate = new Date('2026-06-04T12:00:00'); let displayedMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1); let selectedDateString = "";
+        function formatDate(dateObj) { let d = new Date(dateObj), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear(); if (month.length < 2) month = '0' + month; if (day.length < 2) day = '0' + day; return [year, month, day].join('-'); }
+        let tmrw = new Date(currentDate); tmrw.setDate(tmrw.getDate() + 1);
+
+        // --- CLIENT DATABASE ---
+        let clients = [
+            {
+                id: "c_1", coachId: 'admin', name: "Alex Hunter", email: "alex@example.com", password: "password123", 
+                tier: "Ascent Hybrid", tierPrice: 199, streak: 14, adherence: 85, billingDay: 2,
+                isFirstLogin: false, profilePic: defaultSmiley, age: 28, weight: 185, height: "5'11\"", bf: 14, goal: "Build Muscle",
+                events: { [formatDate(currentDate)]: [{ type: 'workout', protocolId: 'p_1' }] },
+                macroTargets: { cal: 2400, pro: 180, carb: 250, fat: 75 },
+                dietPlan: [ { id: 'd_1', recipeId: recipeLibrary[0].id, eaten: true, notes: '', photo: null }, { id: 'd_2', recipeId: recipeLibrary[1].id, eaten: false, notes: '', photo: null } ],
+                waterData: { val: 48, unit: 'oz' },
+                messages: [ { sender: 'admin', text: 'Hey Alex, great check-in this week.', time: '09:00 AM' } ],
+                workoutData: {}, progressHistory: [{ date: '2026-04-01', weight: 192, bf: 16 }, { date: '2026-05-01', weight: 188, bf: 15 }, { date: '2026-06-01', weight: 185, bf: 14 }],
+                parq: {}, personalProtocols: [], wods: []
+            }
+        ];
+
+        // --- REVENUE PROJECTION & BUSINESS SCALING TRACKER ---
+        let revChartInstance = null; let clientProgressChartInstance = null; const chartLabels = []; const chartData = []; let baseRev = 3400;
+        for(let i=24; i>=0; i--) { let d = new Date(); d.setMonth(d.getMonth() - i); chartLabels.push(d.toLocaleString('default', { month: 'short', year: 'numeric' })); baseRev += Math.floor(Math.random() * 600) - 120; chartData.push(baseRev); }
+
+        // --- AUTHENTICATION & LOGIN ---
+        function registerCoach() {
+            const first = document.getElementById('signup-coach-first').value;
+            const last = document.getElementById('signup-coach-last').value;
+            const email = document.getElementById('signup-coach-email').value;
+            const pass = document.getElementById('signup-coach-pass').value;
+            const pin = document.getElementById('signup-coach-pin').value;
+            const cert = document.getElementById('signup-coach-cert').value;
+            
+            const newCoach = {
+                id: 'coach_' + Date.now(), name: `${first} ${last}`, email: email.toLowerCase(), password: pass, pin: pin, cert: cert, profilePic: defaultCoach
+            };
+            coaches.push(newCoach);
+            alert("Coach Application Submitted and Approved! You may now log in to the portal.");
+            
+            document.getElementById('signup-coach-first').value = ''; document.getElementById('signup-coach-last').value = ''; document.getElementById('signup-coach-email').value = ''; document.getElementById('signup-coach-pass').value = ''; document.getElementById('signup-coach-pin').value = ''; document.getElementById('signup-coach-cert').value = '';
+            navigateTo('auth-view');
+        }
+
+        function attemptLogin() {
+            const user = document.getElementById('login-user').value.toLowerCase(); const pass = document.getElementById('login-pass').value; const err = document.getElementById('login-error');
+            if ((user === adminUser.username.toLowerCase() || user === adminUser.email.toLowerCase()) && pass === adminUser.password) { 
+                err.classList.add('hidden'); currentUserId = adminUser.id; isMasterAdmin = true;
+                if(adminUser.twoFactor) alert("2FA verification required! (Simulated code sent to device)");
+                document.getElementById('nav-actions').classList.remove('hidden'); updateNavAvatar(); goHome(); return;
+            } 
+            const subCoach = coaches.find(c => c.email === user && c.password === pass);
+            if (subCoach) {
+                err.classList.add('hidden'); currentUserId = subCoach.id; isMasterAdmin = false;
+                document.getElementById('nav-actions').classList.remove('hidden'); updateNavAvatar(); goHome(); return;
+            }
+            const client = clients.find(c => c.email === user && c.password === pass);
+            if (client) { 
+                err.classList.add('hidden'); currentUserId = client.id; isMasterAdmin = false; updateNavAvatar();
+                if(client.isFirstLogin) { document.getElementById('auth-view').classList.add('hidden'); document.getElementById('setup-avatar-preview').src = defaultSmiley; tempImageUpload = defaultSmiley; document.getElementById('client-setup-modal').classList.remove('hidden'); } 
+                else { document.getElementById('nav-actions').classList.remove('hidden'); goHome(); } return;
+            } 
+            err.classList.remove('hidden');
+        }
+        function logout() { currentUserId = null; selectedClientId = null; isMasterAdmin = false; viewHistory = []; document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = ''; document.getElementById('nav-actions').classList.add('hidden'); navigateTo('auth-view'); }
+
+        // --- GLOBAL SETTINGS & TEAM MANAGEMENT ---
+        function switchSettingsTab(tab) {
+            document.getElementById('settings-tab-profile').classList.add('hidden'); document.getElementById('settings-tab-preferences').classList.add('hidden'); document.getElementById('settings-tab-team').classList.add('hidden');
+            document.getElementById('btn-set-profile').className = "text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-slate-400 hover:bg-slate-800 hover:text-white transition-colors";
+            document.getElementById('btn-set-prefs').className = "text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-slate-400 hover:bg-slate-800 hover:text-white transition-colors";
+            document.getElementById('btn-set-team').className = "hidden text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest text-slate-400 hover:bg-slate-800 hover:text-white transition-colors";
+            
+            if(isMasterAdmin) document.getElementById('btn-set-team').classList.remove('hidden');
+
+            if(tab === 'profile') { document.getElementById('settings-tab-profile').classList.remove('hidden'); document.getElementById('btn-set-profile').className = "text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest bg-emerald-600 text-white transition-colors"; document.getElementById('settings-actions').classList.remove('hidden'); } 
+            else if(tab === 'preferences') { document.getElementById('settings-tab-preferences').classList.remove('hidden'); document.getElementById('btn-set-prefs').className = "text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest bg-emerald-600 text-white transition-colors"; document.getElementById('settings-actions').classList.remove('hidden'); } 
+            else if(tab === 'team') { document.getElementById('settings-tab-team').classList.remove('hidden'); document.getElementById('btn-set-team').className = "text-left px-4 py-3 rounded-xl font-black text-sm uppercase tracking-widest bg-emerald-600 text-white transition-colors"; document.getElementById('settings-actions').classList.add('hidden'); renderAdminCoachList(); }
+        }
+
+        function openGlobalSettingsModal() {
+            tempImageUpload = null;
+            if(isMasterAdmin) { document.getElementById('settings-avatar-preview').src = adminUser.profilePic; document.getElementById('settings-username').value = adminUser.name; document.getElementById('settings-email').value = adminUser.email; document.getElementById('settings-2fa').checked = adminUser.twoFactor; document.getElementById('btn-set-team').classList.remove('hidden'); } 
+            else if (currentUserId.includes('coach_')) { const coach = coaches.find(c => c.id === currentUserId); document.getElementById('settings-avatar-preview').src = coach.profilePic; document.getElementById('settings-username').value = coach.name; document.getElementById('settings-email').value = coach.email; document.getElementById('settings-2fa').checked = false; document.getElementById('btn-set-team').classList.add('hidden'); } 
+            else { const client = clients.find(c => c.id === currentUserId); document.getElementById('settings-avatar-preview').src = client.profilePic; document.getElementById('settings-username').value = client.name; document.getElementById('settings-email').value = client.email; document.getElementById('settings-2fa').checked = client.twoFactor || false; document.getElementById('btn-set-team').classList.add('hidden'); }
+            document.getElementById('settings-password').value = ''; switchSettingsTab('profile'); document.getElementById('settings-modal').classList.remove('hidden');
+        }
+
+        function saveSettings(e) {
+            e.preventDefault(); const pass = document.getElementById('settings-password').value;
+            if(isMasterAdmin) { adminUser.name = document.getElementById('settings-username').value; adminUser.email = document.getElementById('settings-email').value; adminUser.twoFactor = document.getElementById('settings-2fa').checked; if(tempImageUpload) adminUser.profilePic = tempImageUpload; if(pass) adminUser.password = pass; } 
+            else if (currentUserId.includes('coach_')) { const coach = coaches.find(c => c.id === currentUserId); coach.name = document.getElementById('settings-username').value; coach.email = document.getElementById('settings-email').value; if(tempImageUpload) coach.profilePic = tempImageUpload; if(pass) coach.password = pass; } 
+            else { const client = clients.find(c => c.id === currentUserId); client.name = document.getElementById('settings-username').value; client.email = document.getElementById('settings-email').value; client.twoFactor = document.getElementById('settings-2fa').checked; if(tempImageUpload) client.profilePic = tempImageUpload; if(pass) client.password = pass; }
+            
+            // Handle global units
+            const unitSystem = document.querySelector('input[name="unit_weight"]:checked').value;
+            if(unitSystem === 'kg' && document.getElementById('prog-weight') && document.getElementById('prog-weight').placeholder === 'lbs') { alert("Unit system globally changed to Metric (kg)"); document.getElementById('prog-weight').placeholder = 'kg'; }
+            
+            updateNavAvatar(); closeModal('settings-modal');
+            if(isMasterAdmin || currentUserId.includes('coach_')) renderCoachOverview(); else renderClientPortal();
+        }
+
+        function adminOnboardCoach() {
+            const first = document.getElementById('admin-coach-first').value; const last = document.getElementById('admin-coach-last').value; const email = document.getElementById('admin-coach-email').value; const pass = document.getElementById('admin-coach-pass').value; const cert = document.getElementById('admin-coach-cert').value; const pin = document.getElementById('admin-coach-pin').value;
+            const newCoach = { id: 'coach_' + Date.now(), name: `${first} ${last}`, email: email.toLowerCase(), password: pass, pin: pin, cert: cert, profilePic: defaultCoach };
+            coaches.push(newCoach);
+            alert(`Coach ${first} ${last} successfully onboarded to the team!`);
+            document.getElementById('admin-coach-first').value = ''; document.getElementById('admin-coach-last').value = ''; document.getElementById('admin-coach-email').value = ''; document.getElementById('admin-coach-pass').value = ''; document.getElementById('admin-coach-cert').value = ''; document.getElementById('admin-coach-pin').value = '';
+            renderAdminCoachList();
+        }
+
+        function renderAdminCoachList() {
+            let listHTML = '';
+            if(coaches.length === 0) { listHTML = `<p class="text-slate-500 italic text-sm">No sub-coaches active. Hire a coach to scale your team.</p>`; } 
+            else { coaches.forEach(c => { listHTML += `<div class="bg-slate-900 border-2 border-slate-700 p-4 rounded-xl flex justify-between items-center"><div class="flex items-center"><img src="${c.profilePic}" class="w-10 h-10 rounded-full border-2 border-emerald-500 mr-4"><div><p class="font-black text-white text-sm tracking-wide">${c.name}</p><p class="text-[10px] text-slate-400 font-bold">${c.email} • ${c.cert || 'No Certs'}</p></div></div><button onclick="removeCoach('${c.id}')" class="text-rose-500 hover:text-rose-400 font-black px-3 py-1 rounded border border-rose-500/30 text-xs">Remove</button></div>`; }); }
+            document.getElementById('admin-coach-list').innerHTML = listHTML;
+        }
+
+        function removeCoach(coachId) { if(confirm("Are you sure you want to remove this coach?")) { coaches = coaches.filter(c => c.id !== coachId); renderAdminCoachList(); } }
+        function navigateTo(viewId, isBack = false) {
+            if (!isBack && activeView !== 'auth-view' && viewId !== activeView) { viewHistory.push(activeView); }
+            activeView = viewId;
+            document.querySelectorAll('#main-container > div').forEach(el => el.classList.add('hidden'));
+            document.getElementById('active-workout-view').classList.add('hidden'); document.getElementById('workout-summary-view').classList.add('hidden');
+            if(viewId !== 'active-workout-view' && viewId !== 'workout-summary-view') { document.getElementById('global-nav').classList.remove('hidden'); document.getElementById('main-container').classList.remove('hidden'); }
+            
+            document.getElementById(viewId).classList.remove('hidden');
+            const btnBack = document.getElementById('btn-back'); if (viewHistory.length > 0 && currentUserId !== null) btnBack.classList.remove('hidden'); else btnBack.classList.add('hidden');
+            
+            if(viewId === 'coach-overview') renderCoachOverview(); 
+            if(viewId === 'coach-protocol-library') renderProtocolLibrary(); 
+            if(viewId === 'coach-recipe-library') renderRecipeLibrary(); 
+            if(viewId === 'coach-reminder-library') renderReminderLibrary();
+            if(viewId === 'coach-analytics-view') renderChart(); 
+            if(viewId === 'coach-adherence-view') renderAdherenceAnalytics();
+            if(viewId === 'messages-view') { activeChatUserId = clients[0].id; renderMessages(); }
+            if(viewId === 'coach-client-detail') { renderCoachCalendar(); renderClientNutritionEditor(); renderClientProtocolLibrary(); lockVault(); } 
+            if(viewId === 'client-view') { switchClientPortalTab('training'); renderClientPortal(); }
+        }
+        function goBack() { if (viewHistory.length > 0) { let prev = viewHistory.pop(); navigateTo(prev, true); } }
+        function goHome() { viewHistory = []; if (isMasterAdmin || (currentUserId && currentUserId.includes('coach_'))) navigateTo('coach-overview'); else if (currentUserId !== null) navigateTo('client-view'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        let tempImageUpload = null; 
+        function previewImageUpload(event, targetId) { const file = event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = function(e) { tempImageUpload = e.target.result; document.getElementById(targetId).src = tempImageUpload; }; reader.readAsDataURL(file); } }
+        function updateNavAvatar() { let pic = defaultSmiley; if(isMasterAdmin) pic = adminUser.profilePic; else if(currentUserId && currentUserId.includes('coach_')) pic = coaches.find(c => c.id === currentUserId).profilePic; else if(currentUserId) pic = clients.find(c => c.id === currentUserId).profilePic; document.getElementById('nav-avatar').src = pic; }
+        function isPaymentDue(billingDay) { let todayDay = currentDate.getDate(); let daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); let diff = billingDay - todayDay; if(diff < 0) diff += daysInMonth; return diff >= 0 && diff <= 3; }
+
+        function renderCoachOverview() {
+            let visibleClients = isMasterAdmin ? clients : clients.filter(c => c.coachId === currentUserId);
+            let name = isMasterAdmin ? adminUser.name : coaches.find(c => c.id === currentUserId).name;
+            document.getElementById('coach-dashboard-greeting').innerText = `Welcome, ${name.split(' ')[0]}`;
+            document.getElementById('coach-dashboard-role').innerText = isMasterAdmin ? "Master Admin Dashboard" : "Coach Dashboard";
+            
+            if(isMasterAdmin) document.getElementById('btn-new-client').classList.remove('hidden'); else document.getElementById('btn-new-client').classList.add('hidden');
+            let rev = chartData[chartData.length-1]; let adhSum = 0; visibleClients.forEach(c => { adhSum += c.adherence; });
+            document.getElementById('stat-revenue').innerText = isMasterAdmin ? `$${rev.toLocaleString()}` : 'Hidden'; 
+            document.getElementById('stat-members').innerText = visibleClients.length; 
+            document.getElementById('stat-adherence').innerText = visibleClients.length ? `${Math.round(adhSum / visibleClients.length)}%` : '0%';
+            
+            let rosterHTML = '';
+            visibleClients.forEach(c => {
+                let badge = isPaymentDue(c.billingDay) ? `<span class="px-3 py-1 bg-amber-500 border-2 border-amber-600 text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest ml-3 shadow-[0_2px_0_0_rgba(180,83,9,1)]">💰 Due (Day ${c.billingDay})</span>` : '';
+                rosterHTML += `<tr class="bg-slate-900/50 border-4 border-slate-800 rounded-2xl mb-4 flex items-center justify-between p-4 cursor-pointer hover:border-emerald-500 transition-colors group shadow-lg" onclick="openClientDetail('${c.id}')"><td class="flex items-center"><img src="${c.profilePic}" class="w-12 h-12 rounded-full object-cover mr-4 border-4 border-emerald-500 shadow-md"><div><p class="font-black text-white text-lg tracking-wide">${c.name} ${badge}</p><span class="block text-xs text-slate-400 font-bold mt-1">${c.email}</span></div></td><td><span class="px-4 py-2 bg-emerald-500/20 border-2 border-emerald-500/50 rounded-xl text-emerald-400 text-xs font-black uppercase tracking-widest shadow-inner">${c.tier}</span></td><td class="text-right"><button class="px-6 py-2 bg-slate-800 border-2 border-slate-600 border-b-4 text-white rounded-xl text-xs font-black uppercase tracking-widest group-hover:bg-slate-700 transition-all">Manage</button></td></tr>`;
+            });
+            document.getElementById('roster-table-body').innerHTML = rosterHTML;
+        }
+
+        function lockVault() { document.getElementById('vault-overlay').classList.remove('hidden'); document.getElementById('vault-data').className = "grid grid-cols-2 md:grid-cols-4 gap-6 vault-locked"; document.getElementById('vault-pin-input').value = ''; }
+        function decryptVault() {
+            const input = document.getElementById('vault-pin-input').value; let correctPin = isMasterAdmin ? adminUser.pin : coaches.find(c => c.id === currentUserId).pin; 
+            if(input === correctPin) { document.getElementById('vault-overlay').classList.add('hidden'); document.getElementById('vault-data').className = "grid grid-cols-2 md:grid-cols-4 gap-6 vault-unlocked"; } else { alert("Decryption Failed: Invalid Key PIN."); }
+        }
+
+        function openClientDetail(clientId) {
+            selectedClientId = clientId; const client = clients.find(c => c.id === clientId);
+            if(isMasterAdmin) document.getElementById('btn-edit-client').classList.remove('hidden'); else document.getElementById('btn-edit-client').classList.add('hidden');
+            document.getElementById('detail-client-name').innerText = client.name; document.getElementById('detail-client-tier').innerText = client.tier; document.getElementById('detail-client-avatar').src = client.profilePic;
+            let billingText = isPaymentDue(client.billingDay) ? `Payment Due (Day ${client.billingDay})` : `Bills on Day ${client.billingDay}`; document.getElementById('detail-client-billing').innerText = billingText;
+            document.getElementById('detail-client-adherence').innerText = `${client.adherence}%`; document.getElementById('detail-client-streak').innerText = `${client.streak} Days`; document.getElementById('detail-client-weight').innerText = `${client.weight} lbs / ${client.bf || '--'}%`; document.getElementById('detail-client-goal').innerText = client.goal;
+            switchClientDetailTab('training'); navigateTo('coach-client-detail');
+        }
+
+        function switchClientDetailTab(tab) {
+            const btnT = document.getElementById('tab-btn-training'); const btnP = document.getElementById('tab-btn-plan'); const btnN = document.getElementById('tab-btn-nutrition');
+            const viewT = document.getElementById('detail-tab-training'); const viewP = document.getElementById('detail-tab-plan'); const viewN = document.getElementById('detail-tab-nutrition');
+            [btnT, btnP, btnN].forEach(btn => btn.className = "px-8 py-3 bg-slate-900 text-slate-500 hover:text-white font-black rounded-t-2xl uppercase tracking-widest text-sm transition-colors border-2 border-slate-800 border-b-0");
+            [viewT, viewP, viewN].forEach(v => v.classList.add('hidden'));
+            if(tab === 'training') { btnT.className = "px-8 py-3 bg-emerald-600 text-slate-900 font-black rounded-t-2xl border-t-4 border-l-4 border-r-4 border-emerald-400 uppercase tracking-widest text-sm transition-colors shadow-[0_-4px_10px_rgba(16,185,129,0.3)]"; viewT.classList.remove('hidden'); } 
+            else if(tab === 'plan') { btnP.className = "px-8 py-3 bg-sky-600 text-slate-900 font-black rounded-t-2xl border-t-4 border-l-4 border-r-4 border-sky-400 uppercase tracking-widest text-sm transition-colors shadow-[0_-4px_10px_rgba(14,165,233,0.3)]"; viewP.classList.remove('hidden'); renderClientProtocolLibrary(); }
+            else if(tab === 'nutrition') { btnN.className = "px-8 py-3 bg-amber-500 text-slate-900 font-black rounded-t-2xl border-t-4 border-l-4 border-r-4 border-amber-300 uppercase tracking-widest text-sm transition-colors shadow-[0_-4px_10px_rgba(245,158,11,0.3)]"; viewN.classList.remove('hidden'); }
+        }
+
+        function openEditClientModal() {
+            const client = clients.find(c => c.id === selectedClientId);
+            document.getElementById('edit-client-name').value = client.name; document.getElementById('edit-client-email').value = client.email;
+            const tierSelect = document.getElementById('edit-client-tier'); for(let i=0; i<tierSelect.options.length; i++) { if(tierSelect.options[i].value.includes(client.tier)) tierSelect.selectedIndex = i; }
+            document.getElementById('edit-client-billing').value = client.billingDay; document.getElementById('edit-client-modal').classList.remove('hidden');
+        }
+        function saveClientEdit(e) {
+            e.preventDefault(); const client = clients.find(c => c.id === selectedClientId);
+            client.name = document.getElementById('edit-client-name').value; client.email = document.getElementById('edit-client-email').value;
+            let tierStr = document.getElementById('edit-client-tier').value; client.tier = tierStr.split(' ')[0] + (tierStr.includes('Tier 2') ? ' Hybrid' : tierStr.includes('Tier 3') ? ' VIP' : '');
+            client.tierPrice = tierStr.includes("Tier 1") ? 79 : tierStr.includes("Tier 2") ? 199 : 349; client.billingDay = parseInt(document.getElementById('edit-client-billing').value);
+            closeModal('edit-client-modal'); openClientDetail(selectedClientId); 
+        }
+
+        function renderAdherenceAnalytics() {
+            let visibleClients = isMasterAdmin ? clients : clients.filter(c => c.coachId === currentUserId);
+            let listHTML = '';
+            visibleClients.forEach(c => {
+                let status = c.adherence < 65 ? '<span class="text-rose-400">At Risk</span>' : '<span class="text-emerald-400">On Track</span>'; let barColor = c.adherence < 65 ? 'bg-rose-500' : 'bg-emerald-500';
+                listHTML += `<div class="flex justify-between items-center bg-slate-900 border-2 border-slate-800 p-4 rounded-xl shadow-md"><div class="flex items-center w-1/3"><img src="${c.profilePic}" class="w-10 h-10 rounded-full mr-3"><span class="font-bold text-white truncate">${c.name}</span></div><div class="w-1/3 px-4"><div class="w-full bg-slate-800 rounded-full h-2.5"><div class="${barColor} h-2.5 rounded-full" style="width: ${c.adherence}%"></div></div></div><div class="w-1/3 text-right font-black uppercase tracking-widest text-xs">${status} (${c.adherence}%)</div></div>`;
+            }); document.getElementById('adherence-list').innerHTML = listHTML;
+        }
+
+        function renderMessages() {
+            if(currentUserId && !currentUserId.includes('coach_') && !isMasterAdmin) {
+                const client = clients.find(c => c.id === currentUserId); let coachName = "Brendon Schermerhorn"; let coachPic = defaultCoach;
+                if(client.coachId !== 'admin') { let coachObj = coaches.find(co => co.id === client.coachId); if(coachObj) { coachName = coachObj.name; coachPic = coachObj.profilePic; } }
+                document.getElementById('client-msg-coach-name').innerText = `Coach ${coachName}`; document.getElementById('client-msg-coach-avatar').src = coachPic;
+                
+                let msgHTML = '';
+                client.messages.forEach(m => {
+                    let isMe = m.sender === client.id; let align = isMe ? 'justify-end' : 'justify-start'; let bg = isMe ? 'bg-purple-600 text-white' : 'bg-slate-800 text-slate-200';
+                    msgHTML += `<div class="flex ${align} mb-4"><div class="max-w-[70%] ${bg} p-4 rounded-2xl shadow-md"><p class="font-bold text-sm">${m.text}</p><span class="text-[10px] opacity-60 block mt-2 font-black uppercase tracking-widest text-right">${m.time}</span></div></div>`;
+                });
+                document.getElementById('client-msg-history').innerHTML = msgHTML; document.getElementById('client-msg-history').scrollTop = document.getElementById('client-msg-history').scrollHeight;
+            } else {
+                let visibleClients = isMasterAdmin ? clients : clients.filter(c => c.coachId === currentUserId); let listHTML = '';
+                visibleClients.forEach(c => {
+                    let activeClass = c.id === activeChatUserId ? 'bg-slate-800 border-amber-500' : 'bg-transparent border-transparent hover:bg-slate-800/50';
+                    listHTML += `<div class="p-3 flex items-center cursor-pointer rounded-xl border-2 transition-colors ${activeClass}" onclick="activeChatUserId='${c.id}'; renderMessages();"><img src="${c.profilePic}" class="w-10 h-10 rounded-full mr-3 border-2 border-slate-600"><div class="truncate"><p class="font-black text-white text-sm truncate">${c.name}</p></div></div>`;
+                });
+                document.getElementById('msg-client-list').innerHTML = listHTML;
+
+                let activeClient = clients.find(c => c.id === activeChatUserId);
+                if(activeClient) {
+                    document.getElementById('msg-header-name').innerText = activeClient.name; document.getElementById('msg-header-avatar').src = activeClient.profilePic;
+                    let msgHTML = '';
+                    activeClient.messages.forEach(m => {
+                        let isMe = m.sender !== activeClient.id; let align = isMe ? 'justify-end' : 'justify-start'; let bg = isMe ? 'bg-emerald-600 text-slate-900' : 'bg-slate-800 text-slate-200';
+                        msgHTML += `<div class="flex ${align} mb-4"><div class="max-w-[70%] ${bg} p-4 rounded-2xl shadow-md"><p class="font-bold text-sm">${m.text}</p><span class="text-[10px] opacity-60 block mt-2 font-black uppercase tracking-widest text-right">${m.time}</span></div></div>`;
+                    });
+                    document.getElementById('msg-history').innerHTML = msgHTML; document.getElementById('msg-history').scrollTop = document.getElementById('msg-history').scrollHeight;
+                }
+            }
+        }
+        function sendChatMessage(e) {
+            e.preventDefault(); let inputId = (currentUserId && !currentUserId.includes('coach_') && !isMasterAdmin) ? 'client-chat-input' : 'chat-input';
+            const text = document.getElementById(inputId).value; if(!text) return; let now = new Date(); let timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            if(currentUserId && !currentUserId.includes('coach_') && !isMasterAdmin) { const client = clients.find(c => c.id === currentUserId); client.messages.push({ sender: client.id, text: text, time: timeStr }); } 
+            else { const client = clients.find(c => c.id === activeChatUserId); if(client) client.messages.push({ sender: currentUserId, text: text, time: timeStr }); }
+            document.getElementById(inputId).value = ''; renderMessages();
+        }
+        function sendNudge() { alert("Nudge notification sent to client's device."); }
+        function openOnboardingModal() { alert("Simulating external lead generation link copied to clipboard."); }
+
+        function filterExercises() {
+            const query = document.getElementById('ex-search').value.toLowerCase(); const select = document.getElementById('builder-ex-select'); let optionsHTML = '<option value="" disabled selected>-- Select Movement --</option>';
+            let filtered = exerciseLibrary.filter(e => e.name.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || (e.tags && e.tags.some(t => t.toLowerCase().includes(query))));
+            const types = [...new Set(filtered.map(e => e.type))]; types.forEach(t => { optionsHTML += `<optgroup label="${t} Movements">`; filtered.filter(e => e.type === t).forEach(e => { optionsHTML += `<option value="${e.id}">${e.name} (${e.defReps})</option>`; }); optionsHTML += `</optgroup>`; });
+            select.innerHTML = optionsHTML; if(filtered.length > 0 && query !== "") select.selectedIndex = 1;
+        }
+        function renderProtocolLibrary() {
+            let listHTML = ''; savedProtocols.forEach(p => { listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center hover:border-sky-500 transition-colors group shadow-lg"><div><p class="font-black text-white text-lg drop-shadow">${p.name}</p></div><div class="opacity-0 group-hover:opacity-100 flex space-x-3 transition-opacity"><button onclick="editProtocol('${p.id}')" class="text-white text-xs font-black px-4 py-2 bg-sky-600 border-2 border-sky-400 border-b-4 rounded-xl hover:bg-sky-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Edit</button><button onclick="deleteProtocol('${p.id}')" class="text-white text-xs font-black px-4 py-2 bg-rose-600 border-2 border-rose-400 border-b-4 rounded-xl hover:bg-rose-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Delete</button></div></div>`; });
+            document.getElementById('saved-protocols-list').innerHTML = listHTML; filterExercises(); renderBuilderStaging();
+        }
+        function editProtocol(pId) { editingProtocolId = pId; const protocol = savedProtocols.find(p => p.id === pId); document.getElementById('builder-protocol-name').value = protocol.name; builderStaging = protocol.exercises.map(ex => ({ exId: ex.exId, customReps: ex.customReps, tempId: Date.now() + Math.random() })); document.getElementById('builder-header-title').innerText = "Editing Protocol"; document.getElementById('btn-cancel-edit').classList.remove('hidden'); renderBuilderStaging(); }
+        function cancelEdit() { editingProtocolId = null; document.getElementById('builder-protocol-name').value = ''; builderStaging = []; document.getElementById('builder-header-title').innerText = "Build New Protocol"; document.getElementById('btn-cancel-edit').classList.add('hidden'); renderBuilderStaging(); }
+        function addExerciseToBuilder() { const exId = document.getElementById('builder-ex-select').value; if(!exId) return; builderStaging.push({ exId: exId, customReps: exerciseLibrary.find(e => e.id === exId).defReps, tempId: Date.now() }); renderBuilderStaging(); }
+        function removeBuilderEx(tempId) { builderStaging = builderStaging.filter(b => b.tempId !== tempId); renderBuilderStaging(); }
+        function renderBuilderStaging() { let listHTML = ''; if(builderStaging.length > 0) { builderStaging.forEach((b, index) => { const ex = exerciseLibrary.find(e => e.id === b.exId); listHTML += `<div class="bg-slate-900 p-5 rounded-2xl flex justify-between items-center border-4 border-slate-800 shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">${index+1}.</span>${ex.name}</p><input type="text" value="${b.customReps}" onchange="updateStagingReps(${b.tempId}, this.value)" class="mt-3 text-emerald-400 font-black text-sm p-3 rounded-xl w-40 bg-black/50 border border-slate-700"></div><button onclick="removeBuilderEx(${b.tempId})" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; }); } document.getElementById('builder-staging-list').innerHTML = listHTML; }
+        function updateStagingReps(tId, val) { let i = builderStaging.find(b => b.tempId === tId); if(i) i.customReps = val; }
+        function saveNewProtocol() { const name = document.getElementById('builder-protocol-name').value; if(!name || builderStaging.length === 0) return; if (editingProtocolId) { const protocol = savedProtocols.find(p => p.id === editingProtocolId); protocol.name = name; protocol.exercises = builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelEdit(); } else { savedProtocols.push({ id: 'p_' + Date.now(), name: name, exercises: builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('builder-protocol-name').value = ''; builderStaging = []; } renderProtocolLibrary(); }
+        function deleteProtocol(pId) { savedProtocols = savedProtocols.filter(p => p.id !== pId); renderProtocolLibrary(); }
+
+        function filterClientExercises() {
+            const query = document.getElementById('client-ex-search').value.toLowerCase(); const select = document.getElementById('client-builder-ex-select'); let optionsHTML = '<option value="" disabled selected>-- Select Movement --</option>';
+            let filtered = exerciseLibrary.filter(e => e.name.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || (e.tags && e.tags.some(t => t.toLowerCase().includes(query))));
+            const types = [...new Set(filtered.map(e => e.type))]; types.forEach(t => { optionsHTML += `<optgroup label="${t} Movements">`; filtered.filter(e => e.type === t).forEach(e => { optionsHTML += `<option value="${e.id}">${e.name} (${e.defReps})</option>`; }); optionsHTML += `</optgroup>`; });
+            select.innerHTML = optionsHTML; if(filtered.length > 0 && query !== "") select.selectedIndex = 1;
+        }
+        function renderClientProtocolLibrary() {
+            let listHTML = ''; const client = clients.find(c => c.id === selectedClientId);
+            if(client && client.personalProtocols) { client.personalProtocols.forEach(p => { listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center hover:border-sky-500 transition-colors group shadow-lg"><div><p class="font-black text-white text-lg drop-shadow">${p.name}</p></div><div class="opacity-0 group-hover:opacity-100 flex space-x-3 transition-opacity"><button onclick="editClientProtocol('${p.id}')" class="text-white text-xs font-black px-4 py-2 bg-sky-600 border-2 border-sky-400 border-b-4 rounded-xl hover:bg-sky-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Edit</button><button onclick="deleteClientProtocol('${p.id}')" class="text-white text-xs font-black px-4 py-2 bg-rose-600 border-2 border-rose-400 border-b-4 rounded-xl hover:bg-rose-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Delete</button></div></div>`; }); }
+            document.getElementById('client-saved-protocols-list').innerHTML = listHTML; filterClientExercises(); renderClientBuilderStaging();
+        }
+        function editClientProtocol(pId) { editingClientProtocolId = pId; const client = clients.find(c => c.id === selectedClientId); const protocol = client.personalProtocols.find(p => p.id === pId); document.getElementById('client-builder-protocol-name').value = protocol.name; clientBuilderStaging = protocol.exercises.map(ex => ({ exId: ex.exId, customReps: ex.customReps, tempId: Date.now() + Math.random() })); document.getElementById('client-builder-header-title').innerText = "Editing Custom Plan"; document.getElementById('btn-cancel-client-edit').classList.remove('hidden'); renderClientBuilderStaging(); }
+        function cancelClientEdit() { editingClientProtocolId = null; document.getElementById('client-builder-protocol-name').value = ''; clientBuilderStaging = []; document.getElementById('client-builder-header-title').innerText = "Build Custom Protocol"; document.getElementById('btn-cancel-client-edit').classList.add('hidden'); renderClientBuilderStaging(); }
+        function addExerciseToClientBuilder() { const exId = document.getElementById('client-builder-ex-select').value; if(!exId) return; clientBuilderStaging.push({ exId: exId, customReps: exerciseLibrary.find(e => e.id === exId).defReps, tempId: Date.now() }); renderClientBuilderStaging(); }
+        function removeClientBuilderEx(tempId) { clientBuilderStaging = clientBuilderStaging.filter(b => b.tempId !== tempId); renderClientBuilderStaging(); }
+        function renderClientBuilderStaging() { let listHTML = ''; clientBuilderStaging.forEach((b, index) => { const ex = exerciseLibrary.find(e => e.id === b.exId); listHTML += `<div class="bg-slate-900 p-5 rounded-2xl flex justify-between items-center border-4 border-slate-800 shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">${index+1}.</span>${ex.name}</p><input type="text" value="${b.customReps}" onchange="updateClientStagingReps(${b.tempId}, this.value)" class="mt-3 text-sky-400 font-black text-sm p-3 rounded-xl w-40 bg-black/50 border border-slate-700"></div><button onclick="removeClientBuilderEx(${b.tempId})" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; }); document.getElementById('client-builder-staging-list').innerHTML = listHTML; }
+        function updateClientStagingReps(tId, val) { let i = clientBuilderStaging.find(b => b.tempId === tId); if(i) i.customReps = val; }
+        function saveClientProtocol() { const name = document.getElementById('client-builder-protocol-name').value; if(!name || clientBuilderStaging.length === 0) return; const client = clients.find(c => c.id === selectedClientId); if(!client.personalProtocols) client.personalProtocols = []; if (editingClientProtocolId) { const protocol = client.personalProtocols.find(p => p.id === editingClientProtocolId); protocol.name = name; protocol.exercises = clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelClientEdit(); } else { client.personalProtocols.push({ id: 'cp_' + Date.now(), name: name, exercises: clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('client-builder-protocol-name').value = ''; clientBuilderStaging = []; } renderClientProtocolLibrary(); }
+        function deleteClientProtocol(pId) { const client = clients.find(c => c.id === selectedClientId); client.personalProtocols = client.personalProtocols.filter(p => p.id !== pId); renderClientProtocolLibrary(); }
+
+        function filterRecipes() {
+            const query = (document.getElementById('kitchen-master-search')?.value || '').toLowerCase(); let listHTML = ''; let filtered = recipeLibrary.filter(r => r.name.toLowerCase().includes(query) || r.desc.toLowerCase().includes(query) || (r.tags && r.tags.some(t => t.toLowerCase().includes(query))));
+            if(filtered.length === 0) { listHTML = `<p class="text-slate-500 italic">No recipes match your search.</p>`; } else { filtered.slice(0, 50).forEach(r => { listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center hover:border-amber-500 transition-colors group shadow-lg"><div><p class="font-black text-white text-lg drop-shadow truncate w-48">${r.name}</p><p class="text-xs text-amber-400 mt-2 uppercase font-black tracking-widest bg-amber-500/10 inline-block px-3 py-1 rounded-lg border border-amber-500/30">${r.cal} cal | ${r.pro}P / ${r.carb}C / ${r.fat}F</p></div><div class="opacity-0 group-hover:opacity-100 flex space-x-3 transition-opacity"><button onclick="editRecipe('${r.id}')" class="text-white text-xs font-black px-4 py-2 bg-sky-600 border-2 border-sky-400 border-b-4 rounded-xl hover:bg-sky-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Edit</button><button onclick="deleteRecipe('${r.id}')" class="text-white text-xs font-black px-4 py-2 bg-rose-600 border-2 border-rose-400 border-b-4 rounded-xl hover:bg-rose-500 transition-colors uppercase tracking-widest active:border-b-2 active:translate-y-[2px]">Delete</button></div></div>`; }); }
+            document.getElementById('saved-recipes-list').innerHTML = listHTML;
+        }
+        function renderRecipeLibrary() { filterRecipes(); }
+        function saveRecipe() { const name = document.getElementById('recipe-name').value; const cal = parseInt(document.getElementById('recipe-cal').value); const pro = parseInt(document.getElementById('recipe-pro').value); const carb = parseInt(document.getElementById('recipe-carb').value); const fat = parseInt(document.getElementById('recipe-fat').value); const desc = document.getElementById('recipe-desc').value; if(!name || !cal) return; if (editingRecipeId) { const recipe = recipeLibrary.find(r => r.id === editingRecipeId); recipe.name = name; recipe.cal = cal; recipe.pro = pro; recipe.carb = carb; recipe.fat = fat; recipe.desc = desc; cancelRecipeEdit(); } else { recipeLibrary.unshift({ id: 'r_' + Date.now(), name, cal, pro, carb, fat, desc, tags: [] }); document.getElementById('recipe-name').value=''; document.getElementById('recipe-cal').value=''; document.getElementById('recipe-pro').value=''; document.getElementById('recipe-carb').value=''; document.getElementById('recipe-fat').value=''; document.getElementById('recipe-desc').value=''; } renderRecipeLibrary(); }
+        function editRecipe(rId) { editingRecipeId = rId; const r = recipeLibrary.find(x => x.id === rId); document.getElementById('recipe-name').value = r.name; document.getElementById('recipe-cal').value = r.cal; document.getElementById('recipe-pro').value = r.pro; document.getElementById('recipe-carb').value = r.carb; document.getElementById('recipe-fat').value = r.fat; document.getElementById('recipe-desc').value = r.desc; document.getElementById('recipe-header-title').innerText = "Editing Recipe"; document.getElementById('btn-cancel-recipe-edit').classList.remove('hidden'); }
+        function cancelRecipeEdit() { editingRecipeId = null; document.getElementById('recipe-name').value=''; document.getElementById('recipe-cal').value=''; document.getElementById('recipe-pro').value=''; document.getElementById('recipe-carb').value=''; document.getElementById('recipe-fat').value=''; document.getElementById('recipe-desc').value=''; document.getElementById('recipe-header-title').innerText = "Create New Recipe"; document.getElementById('btn-cancel-recipe-edit').classList.add('hidden'); }
+        function deleteRecipe(rId) { recipeLibrary = recipeLibrary.filter(x => x.id !== rId); renderRecipeLibrary(); }
+
+        function changeMonth(offset) { displayedMonth.setMonth(displayedMonth.getMonth() + offset); renderCoachCalendar(); }
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        function renderCoachCalendar() {
+            if(!selectedClientId) return; const client = clients.find(c => c.id === selectedClientId); document.getElementById('calendar-month-year').innerText = `${monthNames[displayedMonth.getMonth()]} ${displayedMonth.getFullYear()}`; let gridHTML = ''; let firstDay = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1).getDay(); let daysInMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() + 1, 0).getDate();
+            for (let i = 0; i < firstDay; i++) { gridHTML += `<div class="p-2 border-4 border-slate-800 bg-slate-900/50 rounded-2xl min-h-[100px]"></div>`; }
+            for (let d = 1; d <= daysInMonth; d++) {
+                let checkDate = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), d); let dateStr = formatDate(checkDate); let isToday = dateStr === formatDate(currentDate); let dayHTML = `<div class="cursor-pointer p-2 border-4 border-slate-800 bg-slate-900 rounded-2xl min-h-[100px] hover:border-emerald-500 transition-all group relative shadow-lg ${isToday ? 'ring-4 ring-emerald-500 bg-emerald-950/40' : ''}"><div class="text-right text-sm font-black text-slate-500 mb-2 group-hover:text-slate-300 transition-colors">${d}</div>`;
+                if(client.events[dateStr]) { client.events[dateStr].forEach(ev => { let color = ev.type === 'workout' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : ev.type === 'cardio' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/50' : 'bg-amber-500/20 text-amber-400 border border-amber-500/50'; if(ev.type === 'reminder') color = 'bg-rose-500/20 text-rose-400 border border-rose-500/50'; let title = ev.type === 'workout' ? ((savedProtocols.find(p=>p.id===ev.protocolId) || client.personalProtocols?.find(p=>p.id===ev.protocolId) || client.wods?.find(p=>p.id===ev.protocolId))?.name || 'Protocol') : ev.title; dayHTML += `<div class="text-[10px] truncate px-2 py-1 rounded-md ${color} mb-1.5 leading-tight font-black shadow-sm drop-shadow backdrop-blur-sm uppercase tracking-wider">${title}</div>`; }); } dayHTML += `</div>`; gridHTML += dayHTML;
+            } document.getElementById('coach-calendar-grid').innerHTML = gridHTML;
+        }
+
+        function switchClientPortalTab(tab) {
+            const btnT = document.getElementById('client-tab-btn-training'); const btnN = document.getElementById('client-tab-btn-nutrition'); const btnM = document.getElementById('client-tab-btn-messages'); const btnP = document.getElementById('client-tab-btn-progress');
+            const viewT = document.getElementById('client-tab-training'); const viewN = document.getElementById('client-tab-nutrition'); const viewM = document.getElementById('client-tab-messages'); const viewP = document.getElementById('client-tab-progress');
+            [btnT, btnN, btnM, btnP].forEach(btn => btn.className = "flex-1 py-4 bg-slate-900 border-2 border-slate-700 border-b-4 text-slate-500 font-black uppercase tracking-widest rounded-xl hover:text-white transition-all text-xs md:text-sm active:border-b-2 active:translate-y-1");
+            [viewT, viewN, viewM, viewP].forEach(v => v.classList.add('hidden'));
+            if(tab === 'training') { btnT.className = "flex-1 py-4 btn-3d btn-3d-emerald font-black uppercase tracking-widest rounded-xl text-xs md:text-sm"; viewT.classList.remove('hidden'); }
+            else if(tab === 'nutrition') { btnN.className = "flex-1 py-4 btn-3d btn-3d-amber font-black uppercase tracking-widest rounded-xl text-xs md:text-sm"; viewN.classList.remove('hidden'); }
+            else if(tab === 'messages') { btnM.className = "flex-1 py-4 btn-3d btn-3d-purple font-black uppercase tracking-widest rounded-xl text-xs md:text-sm"; viewM.classList.remove('hidden'); renderMessages(); }
+            else if(tab === 'progress') { btnP.className = "flex-1 py-4 btn-3d btn-3d-sky font-black uppercase tracking-widest rounded-xl text-xs md:text-sm"; viewP.classList.remove('hidden'); renderClientProgress(); }
+        }
+
+        function renderClientPortal() {
+            const client = clients.find(c => c.id === currentUserId);
+            document.getElementById('client-greeting-name').innerText = client.name.split(' ')[0]; document.getElementById('client-greeting-tier').innerText = client.tier; document.getElementById('client-greeting-streak').innerText = client.streak; document.getElementById('client-greeting-avatar').src = client.profilePic;
+
+            let viewHTML = '';
+            for(let i=0; i<7; i++) {
+                let targetDate = new Date(currentDate); targetDate.setDate(targetDate.getDate() + i); let dateStr = formatDate(targetDate); let dayName = i === 0 ? "Today" : i === 1 ? "Tmrw" : targetDate.toLocaleDateString('en-US', {weekday: 'short'}); let eventsHTML = '';
+                if(client.events[dateStr]) { client.events[dateStr].forEach(ev => { let icon = ev.type === 'workout' ? '🏋️' : ev.type === 'cardio' ? '🏃' : '📋'; let clr = ev.type === 'workout' ? 'text-emerald-400 bg-emerald-500/20 border border-emerald-500/40' : ev.type === 'cardio' ? 'text-sky-400 bg-sky-500/20 border border-sky-500/40' : 'text-amber-400 bg-amber-500/20 border border-amber-500/40'; if(ev.type === 'reminder') clr = 'text-rose-400 bg-rose-500/20 border border-rose-500/40'; let title = ev.type === 'workout' ? ((savedProtocols.find(p=>p.id===ev.protocolId) || client.personalProtocols?.find(p=>p.id===ev.protocolId) || client.wods?.find(p=>p.id===ev.protocolId))?.name || 'Protocol') : ev.title; eventsHTML += `<p class="text-[10px] font-black uppercase tracking-wider ${clr} px-2 py-1.5 rounded-lg truncate mt-2 shadow-sm drop-shadow">${icon} ${title}</p>`; }); } else { eventsHTML = `<p class="text-xs text-slate-500 mt-2 font-medium">Rest Day</p>`; }
+                viewHTML += `<div class="snap-start min-w-[140px] bg-slate-900 border-4 ${i === 0 ? 'border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)]' : 'border-slate-800'} rounded-2xl p-5"><p class="text-slate-400 text-xs font-black uppercase tracking-widest">${dayName}</p><p class="text-white text-3xl font-black mt-1 drop-shadow-md">${targetDate.getDate()}</p><div class="mt-4 border-t-2 border-slate-800 pt-2">${eventsHTML}</div></div>`;
+            } document.getElementById('client-7day-view').innerHTML = viewHTML;
+
+            const headerTitle = document.getElementById('client-todays-title'); let todayEvents = client.events[formatDate(currentDate)] || []; let todayWorkout = todayEvents.find(e => e.type === 'workout'); const btnStart = document.getElementById('btn-start-workout'); const btnBuildWod = document.getElementById('btn-build-wod'); let wListHTML = '';
+            if(!todayWorkout) { headerTitle.innerText = "Rest & Recover"; btnStart.classList.add('hidden'); btnBuildWod.classList.remove('hidden'); wListHTML = `<div class="p-12 bg-slate-900 rounded-2xl border-4 border-slate-800 text-center shadow-inner"><p class="text-slate-300 font-black text-2xl mb-2 drop-shadow">No heavy lifting scheduled today.</p></div>`; } 
+            else { let protocol = savedProtocols.find(p => p.id === todayWorkout.protocolId) || client.personalProtocols?.find(p=>p.id===todayWorkout.protocolId) || client.wods?.find(p=>p.id===todayWorkout.protocolId); 
+                if(protocol) { headerTitle.innerText = protocol.name; btnStart.classList.remove('hidden'); btnBuildWod.classList.add('hidden'); protocol.exercises.forEach((px, idx) => { let exDef = exerciseLibrary.find(e => e.id === px.exId); wListHTML += `<div class="ex-card bg-slate-900 p-6 rounded-2xl border-4 border-slate-800 flex justify-between items-start shadow-lg"><div class="flex items-start"><span class="text-slate-600 font-black text-3xl mr-5 drop-shadow-md">${idx+1}.</span><div><span class="ex-title block font-black text-white text-xl tracking-wide drop-shadow-md">${exDef.name}</span><span class="ex-reps inline-block mt-3 px-4 py-1.5 bg-emerald-500/20 border-2 border-emerald-500/40 text-emerald-400 font-black text-xs rounded-xl uppercase tracking-widest shadow-inner">${px.customReps}</span></div></div></div>`; }); }
+            } document.getElementById('client-workout-list').innerHTML = wListHTML; document.getElementById('client-workout').value = 0; document.getElementById('workout-val').innerText = '0%'; renderClientPortalNutrition();
+        }
+
+        function filterDietDropdown() { const query = document.getElementById('recipe-search').value.toLowerCase(); const select = document.getElementById('diet-recipe-select'); let optionsHTML = '<option value="" disabled selected>-- Select Meal from Kitchen --</option>'; let filtered = recipeLibrary.filter(r => r.name.toLowerCase().includes(query) || r.desc.toLowerCase().includes(query) || (r.tags && r.tags.some(t => t.toLowerCase().includes(query)))); filtered.slice(0, 50).forEach(r => { optionsHTML += `<option value="${r.id}">${r.name} (${r.cal} cal)</option>`; }); select.innerHTML = optionsHTML; if(filtered.length > 0 && query !== "") { select.selectedIndex = 1; } }
+        function renderClientNutritionEditor() {
+            if(!selectedClientId) return; const client = clients.find(c => c.id === selectedClientId);
+            document.getElementById('tgt-cal').value = client.macroTargets.cal; document.getElementById('tgt-pro').value = client.macroTargets.pro; document.getElementById('tgt-carb').value = client.macroTargets.carb; document.getElementById('tgt-fat').value = client.macroTargets.fat; filterDietDropdown();
+            let listHTML = ''; let totalCal = 0, totalPro = 0, totalCarb = 0, totalFat = 0;
+            client.dietPlan.forEach((meal, i) => { const r = recipeLibrary.find(x => x.id === meal.recipeId); if(r) { totalCal += r.cal; totalPro += r.pro; totalCarb += r.carb; totalFat += r.fat; listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center group shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">Meal ${i+1}</span>${r.name}</p><p class="text-xs text-amber-400 mt-2 uppercase font-black tracking-widest bg-amber-500/10 inline-block px-3 py-1 rounded-lg border border-amber-500/30">${r.cal} cal | ${r.pro}P / ${r.carb}C / ${r.fat}F</p></div><button onclick="removeMealFromClient('${meal.id}')" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; } });
+            listHTML += `<div class="mt-6 pt-6 border-t-4 border-slate-800 flex justify-between text-sm font-black uppercase tracking-widest"><span class="text-slate-400">Total Planned:</span><span class="${totalCal > client.macroTargets.cal ? 'text-rose-400' : 'text-emerald-400'} drop-shadow">${totalCal} Cal / ${totalPro}P / ${totalCarb}C / ${totalFat}F</span></div>`; document.getElementById('detail-client-diet-list').innerHTML = listHTML;
+        }
+        function updateClientMacros() { const client = clients.find(c => c.id === selectedClientId); client.macroTargets.cal = parseInt(document.getElementById('tgt-cal').value); client.macroTargets.pro = parseInt(document.getElementById('tgt-pro').value); client.macroTargets.carb = parseInt(document.getElementById('tgt-carb').value); client.macroTargets.fat = parseInt(document.getElementById('tgt-fat').value); renderClientNutritionEditor(); }
+        function addMealToClient() { const rId = document.getElementById('diet-recipe-select').value; if(!rId) return; const client = clients.find(c => c.id === selectedClientId); client.dietPlan.push({ id: 'd_' + Date.now(), recipeId: rId, eaten: false }); renderClientNutritionEditor(); }
+        function removeMealFromClient(dId) { const client = clients.find(c => c.id === selectedClientId); client.dietPlan = client.dietPlan.filter(m => m.id !== dId); renderClientNutritionEditor(); }
+
+        function renderClientPortalNutrition() {
+            const client = clients.find(c => c.id === currentUserId); let cCal=0, cPro=0, cCarb=0, cFat=0;
+            client.dietPlan.forEach(meal => { if(meal.eaten) { const r = recipeLibrary.find(x => x.id === meal.recipeId); if(r) { cCal += r.cal; cPro += r.pro; cCarb += r.carb; cFat += r.fat; } } });
+            let pCal = Math.min(100, Math.round((cCal / client.macroTargets.cal) * 100)) || 0; let pPro = Math.min(100, Math.round((cPro / client.macroTargets.pro) * 100)) || 0; let pCarb = Math.min(100, Math.round((cCarb / client.macroTargets.carb) * 100)) || 0; let pFat = Math.min(100, Math.round((cFat / client.macroTargets.fat) * 100)) || 0;
+
+            document.getElementById('client-macro-bars').innerHTML = `
+                <div><div class="flex justify-between text-sm font-black mb-2"><span class="text-white uppercase tracking-widest drop-shadow">Calories</span><span class="text-emerald-400 drop-shadow">${cCal} / ${client.macroTargets.cal}</span></div><div class="bg-slate-800 rounded-full h-2.5 shadow-inner border border-slate-700"><div class="bg-emerald-500 h-2.5 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.8)]" style="width: ${pCal}%"></div></div></div>
+                <div><div class="flex justify-between text-sm font-black mb-2"><span class="text-white uppercase tracking-widest drop-shadow">Protein</span><span class="text-sky-400 drop-shadow">${cPro} / ${client.macroTargets.pro} g</span></div><div class="bg-slate-800 rounded-full h-2.5 shadow-inner border border-slate-700"><div class="bg-sky-500 h-2.5 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.8)]" style="width: ${pPro}%"></div></div></div>
+                <div><div class="flex justify-between text-sm font-black mb-2"><span class="text-white uppercase tracking-widest drop-shadow">Carbs</span><span class="text-amber-400 drop-shadow">${cCarb} / ${client.macroTargets.carb} g</span></div><div class="bg-slate-800 rounded-full h-2.5 shadow-inner border border-slate-700"><div class="bg-amber-500 h-2.5 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]" style="width: ${pCarb}%"></div></div></div>
+                <div><div class="flex justify-between text-sm font-black mb-2"><span class="text-white uppercase tracking-widest drop-shadow">Fats</span><span class="text-rose-400 drop-shadow">${cFat} / ${client.macroTargets.fat} g</span></div><div class="bg-slate-800 rounded-full h-2.5 shadow-inner border border-slate-700"><div class="bg-rose-500 h-2.5 rounded-full shadow-[0_0_15px_rgba(244,63,94,0.8)]" style="width: ${pFat}%"></div></div></div>
+            `;
+            document.getElementById('client-water-val').innerText = client.waterData.val; document.getElementById('client-water-unit').innerText = client.waterData.unit;
+            let listHTML = '';
+            client.dietPlan.forEach((meal, idx) => { const r = recipeLibrary.find(x => x.id === meal.recipeId); if(r) { let checked = meal.eaten ? 'checked' : ''; let opacity = meal.eaten ? 'opacity-60' : ''; let photoHTML = meal.photo ? `<img src="${meal.photo}" class="mt-4 rounded-xl h-32 w-full object-cover border-2 border-slate-700 shadow-md">` : ''; listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-6 rounded-2xl flex flex-col hover:border-amber-500/50 transition-colors shadow-lg ${opacity}"><div class="flex justify-between items-start mb-4 cursor-pointer" onclick="toggleClientMeal('${meal.id}')"><div><span class="block font-black text-white text-xl drop-shadow mb-2 ${meal.eaten?'line-through text-slate-500':''}">${r.name}</span><span class="inline-block px-3 py-1 bg-amber-500/20 border border-amber-500/40 text-amber-400 font-black text-xs rounded-lg uppercase tracking-widest shadow-inner">${r.cal} cal | ${r.pro}P</span></div><input type="checkbox" ${checked} class="w-8 h-8 accent-amber-500 bg-black/50 border-2 border-white/20 rounded-xl mt-1 shadow-inner pointer-events-none"></div><div class="pt-4 border-t-2 border-slate-800 space-y-3"><textarea onchange="updateMealNote('${meal.id}', this.value)" rows="2" class="w-full p-3 rounded-xl bg-black/40 text-white text-sm font-bold placeholder-slate-500 focus:border-amber-500" placeholder="Notes (e.g. Swapped chicken for beef)...">${meal.notes || ''}</textarea><label class="block text-center w-full py-3 bg-slate-800 border-2 border-slate-600 border-b-4 hover:bg-slate-700 text-white font-black rounded-xl uppercase tracking-widest text-xs cursor-pointer active:translate-y-1 active:border-b-2 transition-all">📷 Upload Photo<input type="file" accept="image/*" capture="environment" class="hidden" onchange="uploadMealPhoto(event, '${meal.id}')"></label>${photoHTML}</div></div>`; } });
+            document.getElementById('client-diet-list').innerHTML = listHTML;
+        }
+
+        function toggleClientMeal(mId) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.eaten = !meal.eaten; renderClientPortalNutrition(); }
+        function toggleWaterUnit() { const client = clients.find(c => c.id === currentUserId); if(client.waterData.unit === 'oz') { client.waterData.unit = 'ml'; client.waterData.val = Math.round(client.waterData.val * 29.57); } else { client.waterData.unit = 'oz'; client.waterData.val = Math.round(client.waterData.val / 29.57); } renderClientPortalNutrition(); }
+        function logWater(amount, reset = false) { const client = clients.find(c => c.id === currentUserId); if(reset) { client.waterData.val = 0; } else { let addVal = amount; if(client.waterData.unit === 'ml') addVal = amount * 30; client.waterData.val += addVal; } renderClientPortalNutrition(); }
+        function logCustomWater() { const client = clients.find(c => c.id === currentUserId); const amt = parseInt(document.getElementById('custom-water-amt').value); if(amt) { client.waterData.val += amt; document.getElementById('custom-water-amt').value = ''; renderClientPortalNutrition(); } }
+        function uploadMealPhoto(event, mId) { const file = event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = function(e) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.photo = e.target.result; renderClientPortalNutrition(); }; reader.readAsDataURL(file); } }
+        function updateMealNote(mId, val) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.notes = val; }
+
+        function renderClientProgress() {
+            const client = clients.find(c => c.id === currentUserId);
+            if(clientProgressChartInstance) clientProgressChartInstance.destroy();
+            const ctx = document.getElementById('clientProgressChart').getContext('2d');
+            const dates = client.progressHistory.map(p => p.date); const weights = client.progressHistory.map(p => p.weight);
+            clientProgressChartInstance = new Chart(ctx, { type: 'line', data: { labels: dates, datasets: [{ label: 'Bodyweight (lbs)', data: weights, borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderWidth: 4, pointBackgroundColor: '#fff', pointBorderColor: '#10b981', pointBorderWidth: 2, pointRadius: 6, fill: true, tension: 0.3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#94a3b8', font: { family: 'Outfit', weight: 'bold' } } }, x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { family: 'Outfit', weight: 'bold' } } } } } });
+        }
+        function logProgress() {
+            const client = clients.find(c => c.id === currentUserId); const w = parseFloat(document.getElementById('prog-weight').value); const bf = parseFloat(document.getElementById('prog-bf').value); const h = document.getElementById('prog-height').value;
+            if(h) client.height = h; if(w || bf) { client.progressHistory.push({ date: formatDate(new Date()), weight: w || client.weight, bf: bf || client.bf }); if(w) client.weight = w; if(bf) client.bf = bf; }
+            document.getElementById('prog-weight').value = ''; document.getElementById('prog-bf').value = ''; renderClientProgress();
+        }
+
+        // --- ACTIVE WORKOUT ENGINE ---
+        let activeWorkoutStartTime = null; let globalTimerInterval = null; let timerElementCache = null;
+        function updateGlobalTimer() {
+            if(!activeWorkoutStartTime) return; const now = new Date(); const diff = Math.floor((now - activeWorkoutStartTime)/1000); const h = Math.floor(diff/3600); const m = Math.floor((diff%3600)/60); const s = diff%60;
+            if(!timerElementCache) timerElementCache = document.getElementById('global-workout-timer'); timerElementCache.innerText = `${h<10?'0':''}${h}:${m<10?'0':''}${m}:${s<10?'0':''}${s}`;
+        }
+        function startActiveWorkout() {
+            document.querySelectorAll('#main-container > div').forEach(el => el.classList.add('hidden')); document.getElementById('global-nav').classList.add('hidden'); document.getElementById('main-container').classList.add('hidden'); document.getElementById('active-workout-view').classList.remove('hidden');
+            const client = clients.find(c => c.id === currentUserId); activeWorkoutStartTime = new Date(); globalTimerInterval = setInterval(updateGlobalTimer, 1000);
+            let todayEvents = client.events[formatDate(currentDate)] || []; let todayWorkout = todayEvents.find(e => e.type === 'workout');
+            let protocol = savedProtocols.find(p => p.id === todayWorkout.protocolId) || client.personalProtocols?.find(p=>p.id===todayWorkout.protocolId) || client.wods?.find(p=>p.id===todayWorkout.protocolId);
+            
+            document.getElementById('active-workout-title').innerText = protocol.name; let listHTML = '';
+            protocol.exercises.forEach((px, idx) => {
+                let exDef = exerciseLibrary.find(e => e.id === px.exId); let savedNote = client.workoutData[`note_${px.exId}`] || ''; let setsMatch = px.customReps.match(/(\d+)\s*x/); let numSets = setsMatch ? parseInt(setsMatch[1]) : 3; let setsHTML = '';
+                for(let s=1; s<=numSets; s++) {
+                    let r = px.customReps.match(/x\s*([\d-]+)/); let targetRep = r ? r[1] : '';
+                    setsHTML += `<div class="flex justify-between items-center bg-slate-950/60 p-3 rounded-xl mb-3 border-2 border-slate-800 group transition-all" id="row_${px.exId}_${s}"><span class="text-slate-500 font-black text-sm w-12 drop-shadow">SET ${s}</span><div class="flex items-center space-x-2"><input type="number" id="w_${px.exId}_${s}" class="w-16 p-2 rounded-lg bg-black/60 text-white font-black text-center text-sm border-2 border-slate-700 focus:border-emerald-500" placeholder="0"><button onclick="toggleSetUnit(this)" data-unit="lbs" class="text-[10px] font-black text-sky-400 uppercase bg-sky-500/20 px-2 py-1.5 rounded-lg border border-sky-500/30">lbs</button></div><div class="flex items-center space-x-2"><input type="number" id="r_${px.exId}_${s}" value="${targetRep.split('-')[0]}" class="w-16 p-2 rounded-lg bg-black/60 text-white font-black text-center text-sm border-2 border-slate-700 focus:border-emerald-500"><span class="text-[10px] font-black text-slate-500 uppercase px-1">reps</span></div><input type="checkbox" onchange="toggleSetStyle(this, 'row_${px.exId}_${s}')" id="chk_${px.exId}_${s}" class="w-8 h-8 accent-emerald-500 bg-black/50 border-2 border-slate-600 rounded-lg cursor-pointer"></div>`;
+                }
+                listHTML += `<div class="bg-slate-900 p-8 rounded-3xl border-4 border-slate-800 flex flex-col shadow-2xl"><div class="flex items-start mb-6"><span class="text-slate-600 font-black text-3xl mr-4 drop-shadow-md">${idx+1}.</span><div><span class="block font-black text-white text-2xl tracking-wide drop-shadow-md">${exDef.name}</span><span class="inline-block mt-2 px-4 py-1.5 bg-emerald-500/20 border-2 border-emerald-500/40 text-emerald-400 font-black text-xs rounded-xl uppercase tracking-widest">${px.customReps}</span></div></div><div class="mb-6">${setsHTML}</div><div><textarea onchange="saveWorkoutNote('${px.exId}', this.value)" rows="2" class="w-full p-4 rounded-xl bg-black/40 text-white font-bold placeholder-slate-600 text-sm focus:border-amber-500" placeholder="Session notes / Cues...">${savedNote}</textarea></div></div>`; 
+            });
+            document.getElementById('active-workout-list').innerHTML = listHTML;
+        }
+
+        function toggleSetStyle(chk, rowId) { const row = document.getElementById(rowId); if(chk.checked) row.classList.add('set-row-checked'); else row.classList.remove('set-row-checked'); }
+        function toggleSetUnit(btn) { const input = btn.previousElementSibling; let val = parseFloat(input.value); if(btn.dataset.unit === 'lbs') { btn.dataset.unit = 'kg'; btn.innerText = 'kg'; btn.className = "text-[10px] font-black text-amber-400 uppercase bg-amber-500/20 px-2 py-1.5 rounded-lg border border-amber-500/30"; if(val) input.value = (val / 2.20462).toFixed(1); } else { btn.dataset.unit = 'lbs'; btn.innerText = 'lbs'; btn.className = "text-[10px] font-black text-sky-400 uppercase bg-sky-500/20 px-2 py-1.5 rounded-lg border border-sky-500/30"; if(val) input.value = (val * 2.20462).toFixed(1); } }
+        function saveWorkoutNote(exId, val) { const client = clients.find(c => c.id === currentUserId); client.workoutData[`note_${exId}`] = val; }
+
+        let currentTotalVolume = 0;
+        function endActiveWorkout() { clearInterval(globalTimerInterval); timerElementCache = null; document.getElementById('workout-rpe-modal').classList.remove('hidden'); }
+        function updateRPEText(val) {
+            document.getElementById('rpe-number').innerText = val; const desc = document.getElementById('rpe-desc'); const v = parseInt(val);
+            if(v <= 2) { desc.innerText = "Basecamp Stroll"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-md text-emerald-400"; }
+            else if(v <= 4) { desc.innerText = "Foothill Hike"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-md text-sky-400"; }
+            else if(v <= 6) { desc.innerText = "Alpine Ascent"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-md text-amber-400"; }
+            else if(v <= 8) { desc.innerText = "The Crux (Hard)"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-md text-orange-500"; }
+            else if(v === 9) { desc.innerText = "Summit Push"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-md text-rose-500"; }
+            else { desc.innerText = "Death Zone"; desc.className = "text-2xl font-black mb-8 uppercase tracking-widest drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] text-rose-600"; }
+        }
+        function submitWorkout() {
+            document.getElementById('workout-rpe-modal').classList.add('hidden'); currentTotalVolume = 0; const client = clients.find(c => c.id === currentUserId);
+            let todayEvents = client.events[formatDate(currentDate)] || []; let todayWorkout = todayEvents.find(e => e.type === 'workout');
+            if(todayWorkout) {
+                let protocol = savedProtocols.find(p => p.id === todayWorkout.protocolId) || client.personalProtocols?.find(p=>p.id===todayWorkout.protocolId) || client.wods?.find(p=>p.id===todayWorkout.protocolId);
+                protocol.exercises.forEach(px => {
+                    let setsMatch = px.customReps.match(/(\d+)\s*x/); let numSets = setsMatch ? parseInt(setsMatch[1]) : 3;
+                    for(let s=1; s<=numSets; s++) { let chk = document.getElementById(`chk_${px.exId}_${s}`); if(chk && chk.checked) { let wInput = document.getElementById(`w_${px.exId}_${s}`); let rInput = document.getElementById(`r_${px.exId}_${s}`); let weight = parseFloat(wInput.value) || 0; let reps = parseFloat(rInput.value) || 0; let btn = wInput.nextElementSibling; if(btn && btn.dataset.unit === 'kg') weight = weight * 2.20462; currentTotalVolume += (weight * reps); } }
+                });
+            }
+            const overlay = document.getElementById('celebration-overlay'); const content = document.getElementById('celebration-content');
+            overlay.classList.remove('hidden'); setTimeout(() => { content.classList.add('animate-summit'); }, 50); setTimeout(() => { overlay.classList.add('hidden'); content.classList.remove('animate-summit'); renderWorkoutSummary(); }, 2500);
+        }
+
+        function renderWorkoutSummary() {
+            document.getElementById('active-workout-view').classList.add('hidden'); document.getElementById('workout-summary-view').classList.remove('hidden');
+            const diff = Math.floor((new Date() - activeWorkoutStartTime)/1000); const m = Math.floor(diff/60); const s = diff%60;
+            document.getElementById('summary-time').innerText = `${m}m ${s}s`; document.getElementById('summary-volume').innerText = `${Math.round(currentTotalVolume).toLocaleString()} lbs`;
+
+            let prHTML = '';
+            if(currentTotalVolume > 5000) { prHTML += `<div class="bg-amber-500/20 border-2 border-amber-500 p-4 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)]"><span class="text-3xl mr-3">🏆</span><div><p class="text-amber-400 font-black uppercase tracking-widest text-sm">New Total Volume PR!</p><p class="text-white font-bold text-xs mt-1">You moved a mountain today.</p></div></div>`; }
+            if(Math.random() > 0.5) { prHTML += `<div class="bg-sky-500/20 border-2 border-sky-500 p-4 rounded-xl flex items-center justify-center mt-4 shadow-[0_0_20px_rgba(14,165,233,0.3)]"><span class="text-3xl mr-3">⚡</span><div><p class="text-sky-400 font-black uppercase tracking-widest text-sm">New Rep PR: Squat</p><p class="text-white font-bold text-xs mt-1">Lifted heavier than last week.</p></div></div>`; }
+            document.getElementById('summary-prs').innerHTML = prHTML; document.getElementById('client-workout').value = 100; document.getElementById('workout-val').innerText = '100%';
+        }
+        function closeSummary() { document.getElementById('workout-summary-view').classList.add('hidden'); document.getElementById('global-nav').classList.remove('hidden'); document.getElementById('main-container').classList.remove('hidden'); const client = clients.find(c => c.id === currentUserId); client.streak += 1; navigateTo('client-view'); switchClientPortalTab('training'); }
+        function submitClientData() { alert(`Ascent Logged! Check-in securely sent to coach.`); const client = clients.find(c => c.id === currentUserId); client.streak += 1; renderClientPortal(); }
+
+        // --- WOD BUILDER MODAL LOGIC ---
+        function openWodBuilder(dateOverride) { wodTargetDate = dateOverride || formatDate(currentDate); wodStaging = []; document.getElementById('wod-target-date').innerText = wodTargetDate; filterWodExercises(); renderWodStaging(); document.getElementById('wod-builder-modal').classList.remove('hidden'); }
+        function filterWodExercises() {
+            const query = (document.getElementById('wod-ex-search') ? document.getElementById('wod-ex-search').value : '').toLowerCase(); let optionsHTML = '<option value="" disabled selected>-- Select Movement --</option>'; let filtered = exerciseLibrary.filter(e => e.name.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || (e.tags && e.tags.some(t => t.toLowerCase().includes(query))));
+            const types = [...new Set(filtered.map(e => e.type))]; types.forEach(t => { optionsHTML += `<optgroup label="${t} Movements">`; filtered.filter(e => e.type === t).forEach(e => { optionsHTML += `<option value="${e.id}">${e.name} (${e.defReps})</option>`; }); optionsHTML += `</optgroup>`; });
+            let select = document.getElementById('wod-ex-select'); if(select) { select.innerHTML = optionsHTML; if(filtered.length > 0 && query !== "") select.selectedIndex = 1; }
+        }
+        function addWodExercise() { const exId = document.getElementById('wod-ex-select').value; if(!exId) return; wodStaging.push({ exId: exId, customReps: exerciseLibrary.find(e => e.id === exId).defReps, tempId: Date.now() }); renderWodStaging(); }
+        function removeWodEx(tempId) { wodStaging = wodStaging.filter(b => b.tempId !== tempId); renderWodStaging(); }
+        function renderWodStaging() { let listHTML = ''; wodStaging.forEach((b, index) => { const ex = exerciseLibrary.find(e => e.id === b.exId); listHTML += `<div class="bg-slate-900 p-5 rounded-2xl flex justify-between items-center border-4 border-slate-800 shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">${index+1}.</span>${ex.name}</p><input type="text" value="${b.customReps}" onchange="updateWodStagingReps(${b.tempId}, this.value)" class="mt-3 text-purple-400 font-black text-sm p-3 rounded-xl w-40 bg-black/50 border border-slate-700"></div><button type="button" onclick="removeWodEx(${b.tempId})" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; }); let list = document.getElementById('wod-staging-list'); if(list) list.innerHTML = listHTML; }
+        function updateWodStagingReps(tId, val) { let i = wodStaging.find(b => b.tempId === tId); if(i) i.customReps = val; }
+        function saveWod() {
+            if(wodStaging.length === 0) return alert("Add at least one exercise."); const client = clients.find(c => c.id === (isMasterAdmin ? selectedClientId : currentUserId));
+            if(!client.wods) client.wods = []; const wodId = 'wod_' + Date.now(); client.wods.push({ id: wodId, name: 'WOD - ' + wodTargetDate, exercises: wodStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) });
+            if(!client.events[wodTargetDate]) client.events[wodTargetDate] = []; client.events[wodTargetDate].push({ type: 'workout', protocolId: wodId });
+            closeModal('wod-builder-modal'); if(isMasterAdmin || currentUserId.includes('coach_')) renderCoachCalendar(); else { renderClientPortal(); switchClientPortalTab('training'); }
+        }
+
+    </script>
+</body>
+</html>
