@@ -269,53 +269,6 @@
                 </div>
             </div>
         </div>
-        <!-- KITCHEN CMS -->
-        <div id="coach-recipe-library" class="hidden space-y-8">
-            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">The Kitchen (Recipes)</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
-                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex flex-col space-y-3"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Meals</h3><input type="text" id="kitchen-master-search" oninput="renderRecipeLibrary()" onkeydown="if(event.key === 'Enter') { event.preventDefault(); }" placeholder="Search diets/targets (keto, paleo...)" class="w-full p-3 rounded-xl text-amber-300 font-bold bg-slate-950/50 placeholder-slate-500"></div>
-                    <div id="saved-recipes-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
-                </div>
-                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
-                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-amber-400 text-xl drop-shadow-md uppercase tracking-widest" id="recipe-header-title">Create New Recipe</h3><button id="btn-cancel-recipe-edit" onclick="cancelRecipeEdit()" class="hidden text-xs bg-rose-600 border-b-4 border-rose-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel Edit</button></div>
-                    <form onsubmit="event.preventDefault(); saveRecipe();" class="flex-1 flex flex-col overflow-hidden">
-                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
-                            <input type="text" id="recipe-name" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500" placeholder="Recipe Name (e.g. Alpine Oats)">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Calories</label><input type="number" id="recipe-cal" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
-                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Protein (g)</label><input type="number" id="recipe-pro" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
-                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Carbs (g)</label><input type="number" id="recipe-carb" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
-                                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Fats (g)</label><input type="number" id="recipe-fat" required class="w-full p-3 rounded-xl font-bold focus:border-amber-500"></div>
-                            </div>
-                            <textarea id="recipe-desc" rows="4" class="w-full p-4 rounded-xl font-bold placeholder-slate-500 focus:border-amber-500" placeholder="Instructions..."></textarea>
-                        </div>
-                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-recipe" class="w-full py-5 btn-3d btn-3d-amber rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)]">Save Recipe to Kitchen</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- REMINDERS CMS -->
-        <div id="coach-reminder-library" class="hidden space-y-8">
-            <h2 class="text-5xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">Reminder Library</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                <div class="lg:col-span-2 glass-panel flex flex-col h-[750px]">
-                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80"><h3 class="font-black text-white text-xl drop-shadow-md uppercase tracking-widest">Saved Reminders</h3></div>
-                    <div id="saved-reminders-list" class="p-6 space-y-4 flex-1 overflow-y-auto bg-slate-950/40"></div>
-                </div>
-                <div class="lg:col-span-3 glass-panel flex flex-col h-[750px] relative overflow-hidden">
-                    <div class="p-6 border-b-4 border-slate-800 bg-slate-900/80 flex justify-between items-center"><h3 class="font-black text-rose-400 text-xl drop-shadow-md uppercase tracking-widest" id="reminder-header-title">Create New Reminder</h3><button id="btn-cancel-reminder-edit" onclick="cancelReminderEdit()" class="hidden text-xs bg-slate-600 border-b-4 border-slate-800 text-white px-4 py-2 rounded-lg font-black uppercase tracking-widest">Cancel</button></div>
-                    <form onsubmit="event.preventDefault(); saveReminder();" class="flex-1 flex flex-col overflow-hidden">
-                        <div class="p-8 flex-1 overflow-y-auto space-y-6 bg-slate-950/60">
-                            <label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Reminder Text</label>
-                            <input type="text" id="reminder-text" required class="w-full p-4 rounded-xl text-white font-black text-xl placeholder-slate-500 focus:border-rose-500" placeholder="e.g. Submit Weekly Photos">
-                        </div>
-                        <div class="p-6 border-t-4 border-slate-800 bg-slate-900/80"><button type="submit" id="btn-save-reminder" class="w-full py-5 btn-3d btn-3d-rose rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.2)]">Save Reminder</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- COACH CLIENT DEEP FILE VIEW -->
         <div id="coach-client-detail" class="hidden space-y-8">
             <div class="glass-panel p-8 flex justify-between items-center bg-card-texture shadow-2xl border-4 border-emerald-500/30 border-t-8 border-t-emerald-500">
@@ -436,9 +389,9 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
-                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-slate-500 hover:border-slate-400 transition-colors cursor-pointer"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide">Basecamp</h3><p class="text-emerald-400 font-black text-xl mt-2">$79.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-slate-200">✅ One-time Custom Buildout.</span></li></ul></div>
-                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.2)]"><div class="absolute top-0 right-0 bg-emerald-500 text-slate-900 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-bl-xl">Most Popular</div><div class="mb-6"><h3 class="text-4xl font-black text-white drop-shadow-md uppercase tracking-wide text-emerald-300">Ascent Hybrid</h3><p class="text-emerald-400 font-black text-2xl mt-2">$199.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-black text-sm text-white">🔥 Monthly Dynamic Modifications.</span></li></ul></div>
-                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-amber-500 hover:border-amber-400 transition-colors cursor-pointer"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide text-amber-300">Summit VIP 1-on-1</h3><p class="text-emerald-400 font-black text-xl mt-2">$349.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-amber-100">👑 Elite Concierge Digital Coaching.</span></li></ul></div>
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-slate-500 hover:border-slate-400 transition-colors"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide">Basecamp</h3><p class="text-emerald-400 font-black text-xl mt-2">$79.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-slate-200">✅ One-time Custom Buildout.</span></li><li class="flex items-start"><span class="font-bold text-sm text-slate-200">Training calendar, nutrition targets, and app access.</span></li></ul><button onclick="prefillOnboardingTier('Ascent Base|79')" class="w-full py-4 btn-3d bg-slate-800 border-slate-600 rounded-xl font-black uppercase tracking-widest">Start Basecamp</button></div>
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.2)]"><div class="absolute top-0 right-0 bg-emerald-500 text-slate-900 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-bl-xl">Most Popular</div><div class="mb-6"><h3 class="text-4xl font-black text-white drop-shadow-md uppercase tracking-wide text-emerald-300">Ascent Hybrid</h3><p class="text-emerald-400 font-black text-2xl mt-2">$199.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-black text-sm text-white">🔥 Monthly Dynamic Modifications.</span></li><li class="flex items-start"><span class="font-bold text-sm text-slate-200">Messaging, adherence review, and live program updates.</span></li></ul><button onclick="prefillOnboardingTier('Ascent Hybrid|199')" class="w-full py-4 btn-3d btn-3d-emerald rounded-xl font-black uppercase tracking-widest">Start Hybrid</button></div>
+                <div class="glass-panel p-8 flex flex-col relative overflow-hidden border-t-8 border-t-amber-500 hover:border-amber-400 transition-colors"><div class="mb-6"><h3 class="text-3xl font-black text-white drop-shadow-md uppercase tracking-wide text-amber-300">Summit VIP 1-on-1</h3><p class="text-emerald-400 font-black text-xl mt-2">$349.99 <span class="text-sm text-slate-400">/ month</span></p></div><ul class="space-y-4 mb-8 flex-1"><li class="flex items-start"><span class="font-bold text-sm text-amber-100">👑 Elite Concierge Digital Coaching.</span></li><li class="flex items-start"><span class="font-bold text-sm text-slate-200">Priority check-ins, detailed feedback, and high-touch support.</span></li></ul><button onclick="prefillOnboardingTier('Ascent VIP|349')" class="w-full py-4 btn-3d btn-3d-amber rounded-xl font-black uppercase tracking-widest">Start VIP</button></div>
             </div>
         </div>
 
@@ -491,7 +444,7 @@
                         <div class="w-16 h-16 bg-emerald-500 text-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-[0_6px_0_0_rgba(4,120,87,1)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                         <h3 class="text-3xl font-black text-white mb-2 drop-shadow-md uppercase tracking-widest">Log Ascent</h3>
                         <div class="space-y-8 mt-8">
-                            <div><input type="range" id="client-workout" min="0" max="100" value="0" class="w-full accent-emerald-500 h-4 bg-slate-900 rounded-xl appearance-none cursor-pointer shadow-inner border-2 border-slate-700"><div class="flex justify-between text-sm text-slate-400 mt-4 font-black"><span>0%</span><span id="workout-val" class="text-emerald-400 text-2xl drop-shadow">0%</span></div></div>
+                            <div><input type="range" id="client-workout" min="0" max="100" value="0" oninput="document.getElementById('workout-val').innerText = this.value + '%'" class="w-full accent-emerald-500 h-4 bg-slate-900 rounded-xl appearance-none cursor-pointer shadow-inner border-2 border-slate-700"><div class="flex justify-between text-sm text-slate-400 mt-4 font-black"><span>0%</span><span id="workout-val" class="text-emerald-400 text-2xl drop-shadow">0%</span></div></div>
                             <button onclick="submitClientData()" class="w-full py-5 btn-3d btn-3d-emerald text-white font-black uppercase tracking-widest rounded-xl text-lg">Submit Check-In</button>
                         </div>
                     </div>
@@ -606,6 +559,10 @@
                                 <label class="flex-1 flex items-center space-x-2 cursor-pointer bg-black/40 p-3 rounded-xl border border-slate-600"><input type="radio" name="unit_weight" value="kg" class="accent-emerald-500 w-4 h-4"><span class="text-xs font-black text-slate-300 uppercase">Metric (kg)</span></label>
                             </div>
                         </div>
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border-4 border-slate-700 shadow-inner">
+                            <h4 class="text-white font-black uppercase text-sm mb-3">Business Backup</h4>
+                            <button type="button" onclick="exportAppData()" class="w-full py-3 btn-3d btn-3d-sky rounded-xl font-black uppercase tracking-widest text-xs">Export App Data</button>
+                        </div>
                     </div>
 
                     <!-- Shared Action Buttons for Profile & Preferences -->
@@ -639,6 +596,86 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- CLIENT ONBOARDING MODAL -->
+    <div id="onboarding-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[70] flex items-center justify-center px-4 py-8 overflow-y-auto">
+        <div class="glass-panel p-8 max-w-3xl w-full border-4 border-emerald-500 shadow-[0_0_35px_rgba(16,185,129,0.22)]">
+            <div class="flex justify-between items-start gap-6 border-b-4 border-slate-800 pb-5 mb-6">
+                <div>
+                    <p class="text-emerald-400 text-xs font-black uppercase tracking-widest">New Climber Intake</p>
+                    <h3 class="text-3xl font-black text-white uppercase tracking-widest mt-2">Onboard Client</h3>
+                </div>
+                <button onclick="closeModal('onboarding-modal')" class="px-4 py-2 bg-slate-800 border-2 border-slate-600 border-b-4 rounded-xl font-black">Close</button>
+            </div>
+            <form onsubmit="createClientFromOnboarding(event)" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Full Name</label><input id="new-client-name" type="text" required class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Email</label><input id="new-client-email" type="email" required class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Temporary Password</label><input id="new-client-password" type="text" required value="password123" class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Program Tier</label><select id="new-client-tier" class="w-full p-4 rounded-xl font-bold"><option value="Ascent Base|79">Ascent Base - $79</option><option value="Ascent Hybrid|199" selected>Ascent Hybrid - $199</option><option value="Ascent VIP|349">Ascent VIP - $349</option></select></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Billing Day</label><input id="new-client-billing" type="number" min="1" max="28" value="1" required class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Primary Goal</label><input id="new-client-goal" type="text" value="Build Muscle" required class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Weight (lbs)</label><input id="new-client-weight" type="number" value="180" class="w-full p-4 rounded-xl font-bold"></div>
+                    <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Height</label><input id="new-client-height" type="text" placeholder="5'10&quot;" class="w-full p-4 rounded-xl font-bold"></div>
+                </div>
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">PAR-Q / Intake Notes</label><textarea id="new-client-notes" rows="3" class="w-full p-4 rounded-xl font-bold" placeholder="Injuries, limitations, schedule, preferences..."></textarea></div>
+                <div class="flex flex-col md:flex-row gap-4 pt-4 border-t-4 border-slate-800">
+                    <button type="button" onclick="copyLeadLink()" class="flex-1 py-4 btn-3d btn-3d-sky rounded-xl font-black uppercase tracking-widest">Copy Intake Link</button>
+                    <button type="submit" class="flex-1 py-4 btn-3d btn-3d-emerald rounded-xl font-black uppercase tracking-widest">Create Client</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CLIENT EDIT MODAL -->
+    <div id="edit-client-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[70] flex items-center justify-center px-4">
+        <div class="glass-panel p-8 max-w-xl w-full border-4 border-sky-500">
+            <h3 class="text-3xl font-black text-white uppercase tracking-widest border-b-4 border-slate-800 pb-4 mb-6">Edit Client</h3>
+            <form onsubmit="saveClientEdit(event)" class="space-y-5">
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Name</label><input id="edit-client-name" type="text" required class="w-full p-4 rounded-xl font-bold"></div>
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Email</label><input id="edit-client-email" type="email" required class="w-full p-4 rounded-xl font-bold"></div>
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Tier</label><select id="edit-client-tier" class="w-full p-4 rounded-xl font-bold"><option value="Ascent Base|79">Ascent Base - $79</option><option value="Ascent Hybrid|199">Ascent Hybrid - $199</option><option value="Ascent VIP|349">Ascent VIP - $349</option></select></div>
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Billing Day</label><input id="edit-client-billing" type="number" min="1" max="28" required class="w-full p-4 rounded-xl font-bold"></div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="closeModal('edit-client-modal')" class="flex-1 py-4 bg-slate-800 border-2 border-slate-600 border-b-4 rounded-xl font-black">Cancel</button>
+                    <button type="submit" class="flex-1 py-4 btn-3d btn-3d-sky rounded-xl font-black uppercase tracking-widest">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FIRST LOGIN SETUP MODAL -->
+    <div id="client-setup-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[80] flex items-center justify-center px-4">
+        <div class="glass-panel p-8 max-w-lg w-full border-4 border-emerald-500 text-center">
+            <h3 class="text-3xl font-black text-white uppercase tracking-widest mb-2">Profile Setup</h3>
+            <p class="text-slate-400 font-bold mb-6">Confirm your avatar and password before entering Basecamp.</p>
+            <label class="mx-auto block relative cursor-pointer w-28 h-28 rounded-full border-4 border-emerald-500 overflow-hidden mb-6">
+                <img id="setup-avatar-preview" src="" alt="Client avatar preview" class="w-full h-full object-cover">
+                <input type="file" accept="image/*" class="hidden" onchange="previewImageUpload(event, 'setup-avatar-preview')">
+            </label>
+            <form onsubmit="finishClientSetup(event)" class="space-y-4">
+                <input type="password" id="setup-password" class="w-full p-4 rounded-xl text-center font-bold" placeholder="New password (optional)">
+                <button type="submit" class="w-full py-4 btn-3d btn-3d-emerald rounded-xl font-black uppercase tracking-widest">Enter Portal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CALENDAR EVENT MODAL -->
+    <div id="calendar-event-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[70] flex items-center justify-center px-4">
+        <div class="glass-panel p-8 max-w-xl w-full border-4 border-amber-500">
+            <p id="calendar-event-date" class="text-amber-400 text-xs font-black uppercase tracking-widest mb-2"></p>
+            <h3 class="text-3xl font-black text-white uppercase tracking-widest border-b-4 border-slate-800 pb-4 mb-6">Schedule Item</h3>
+            <form onsubmit="saveCalendarEvent(event)" class="space-y-5">
+                <div><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Type</label><select id="calendar-event-type" onchange="updateCalendarEventOptions()" class="w-full p-4 rounded-xl font-bold"><option value="workout">Workout</option><option value="cardio">Cardio</option><option value="reminder">Reminder</option><option value="checkin">Check-In</option></select></div>
+                <div id="calendar-workout-wrap"><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Protocol</label><select id="calendar-protocol-select" class="w-full p-4 rounded-xl font-bold"></select></div>
+                <div id="calendar-title-wrap"><label class="block text-xs uppercase font-black text-slate-400 mb-2 ml-1">Title</label><input id="calendar-event-title" type="text" class="w-full p-4 rounded-xl font-bold" placeholder="Morning walk, weekly photos, check-in..."></div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="closeModal('calendar-event-modal')" class="flex-1 py-4 bg-slate-800 border-2 border-slate-600 border-b-4 rounded-xl font-black">Cancel</button>
+                    <button type="submit" class="flex-1 py-4 btn-3d btn-3d-amber rounded-xl font-black uppercase tracking-widest">Add Event</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -811,10 +848,10 @@
         }
         expandLibraries();
 
-        let builderStaging = []; let editingProtocolId = null; let editingRecipeId = null;
+        let builderStaging = []; let editingProtocolId = null; let editingRecipeId = null; let clientBuilderStaging = []; let editingClientProtocolId = null;
         let wodStaging = []; let wodTargetDate = "";
 
-        let currentDate = new Date('2026-06-04T12:00:00'); let displayedMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1); let selectedDateString = "";
+        let currentDate = new Date(); currentDate.setHours(12, 0, 0, 0); let displayedMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1); let selectedDateString = "";
         function formatDate(dateObj) { let d = new Date(dateObj), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear(); if (month.length < 2) month = '0' + month; if (day.length < 2) day = '0' + day; return [year, month, day].join('-'); }
         let tmrw = new Date(currentDate); tmrw.setDate(tmrw.getDate() + 1);
 
@@ -834,6 +871,36 @@
             }
         ];
 
+        const STORAGE_KEY = 'mountaintopAthleticsState.v2';
+        function saveAppState() {
+            const state = { adminUser, coaches, clients, savedProtocols, recipeLibrary, reminderLibrary };
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (err) { console.warn('Local save skipped:', err); }
+        }
+        function loadAppState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if(!raw) return;
+                const state = JSON.parse(raw);
+                adminUser = state.adminUser || adminUser;
+                coaches = state.coaches || coaches;
+                clients = state.clients || clients;
+                savedProtocols = state.savedProtocols || savedProtocols;
+                recipeLibrary = state.recipeLibrary || recipeLibrary;
+                reminderLibrary = state.reminderLibrary || reminderLibrary;
+            } catch (err) {
+                console.warn('Saved state could not be loaded:', err);
+            }
+        }
+        function exportAppData() {
+            const payload = JSON.stringify({ adminUser, coaches, clients, savedProtocols, recipeLibrary, reminderLibrary }, null, 2);
+            const blob = new Blob([payload], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url; link.download = `mountaintop-athletics-export-${formatDate(new Date())}.json`; link.click();
+            URL.revokeObjectURL(url);
+        }
+        loadAppState();
+
         // --- REVENUE PROJECTION & BUSINESS SCALING TRACKER ---
         let revChartInstance = null; let clientProgressChartInstance = null; const chartLabels = []; const chartData = []; let baseRev = 3400;
         for(let i=24; i>=0; i--) { let d = new Date(); d.setMonth(d.getMonth() - i); chartLabels.push(d.toLocaleString('default', { month: 'short', year: 'numeric' })); baseRev += Math.floor(Math.random() * 600) - 120; chartData.push(baseRev); }
@@ -851,6 +918,7 @@
                 id: 'coach_' + Date.now(), name: `${first} ${last}`, email: email.toLowerCase(), password: pass, pin: pin, cert: cert, profilePic: defaultCoach
             };
             coaches.push(newCoach);
+            saveAppState();
             alert("Coach Application Submitted and Approved! You may now log in to the portal.");
             
             document.getElementById('signup-coach-first').value = ''; document.getElementById('signup-coach-last').value = ''; document.getElementById('signup-coach-email').value = ''; document.getElementById('signup-coach-pass').value = ''; document.getElementById('signup-coach-pin').value = ''; document.getElementById('signup-coach-cert').value = '';
@@ -911,7 +979,7 @@
             const unitSystem = document.querySelector('input[name="unit_weight"]:checked').value;
             if(unitSystem === 'kg' && document.getElementById('prog-weight') && document.getElementById('prog-weight').placeholder === 'lbs') { alert("Unit system globally changed to Metric (kg)"); document.getElementById('prog-weight').placeholder = 'kg'; }
             
-            updateNavAvatar(); closeModal('settings-modal');
+            saveAppState(); updateNavAvatar(); closeModal('settings-modal');
             if(isMasterAdmin || currentUserId.includes('coach_')) renderCoachOverview(); else renderClientPortal();
         }
 
@@ -919,6 +987,7 @@
             const first = document.getElementById('admin-coach-first').value; const last = document.getElementById('admin-coach-last').value; const email = document.getElementById('admin-coach-email').value; const pass = document.getElementById('admin-coach-pass').value; const cert = document.getElementById('admin-coach-cert').value; const pin = document.getElementById('admin-coach-pin').value;
             const newCoach = { id: 'coach_' + Date.now(), name: `${first} ${last}`, email: email.toLowerCase(), password: pass, pin: pin, cert: cert, profilePic: defaultCoach };
             coaches.push(newCoach);
+            saveAppState();
             alert(`Coach ${first} ${last} successfully onboarded to the team!`);
             document.getElementById('admin-coach-first').value = ''; document.getElementById('admin-coach-last').value = ''; document.getElementById('admin-coach-email').value = ''; document.getElementById('admin-coach-pass').value = ''; document.getElementById('admin-coach-cert').value = ''; document.getElementById('admin-coach-pin').value = '';
             renderAdminCoachList();
@@ -931,7 +1000,7 @@
             document.getElementById('admin-coach-list').innerHTML = listHTML;
         }
 
-        function removeCoach(coachId) { if(confirm("Are you sure you want to remove this coach?")) { coaches = coaches.filter(c => c.id !== coachId); renderAdminCoachList(); } }
+        function removeCoach(coachId) { if(confirm("Are you sure you want to remove this coach?")) { coaches = coaches.filter(c => c.id !== coachId); clients.forEach(c => { if(c.coachId === coachId) c.coachId = 'admin'; }); saveAppState(); renderAdminCoachList(); } }
         function navigateTo(viewId, isBack = false) {
             if (!isBack && activeView !== 'auth-view' && viewId !== activeView) { viewHistory.push(activeView); }
             activeView = viewId;
@@ -1009,14 +1078,14 @@
         function openEditClientModal() {
             const client = clients.find(c => c.id === selectedClientId);
             document.getElementById('edit-client-name').value = client.name; document.getElementById('edit-client-email').value = client.email;
-            const tierSelect = document.getElementById('edit-client-tier'); for(let i=0; i<tierSelect.options.length; i++) { if(tierSelect.options[i].value.includes(client.tier)) tierSelect.selectedIndex = i; }
+            const tierSelect = document.getElementById('edit-client-tier'); for(let i=0; i<tierSelect.options.length; i++) { if(tierSelect.options[i].value.startsWith(client.tier)) tierSelect.selectedIndex = i; }
             document.getElementById('edit-client-billing').value = client.billingDay; document.getElementById('edit-client-modal').classList.remove('hidden');
         }
         function saveClientEdit(e) {
             e.preventDefault(); const client = clients.find(c => c.id === selectedClientId);
             client.name = document.getElementById('edit-client-name').value; client.email = document.getElementById('edit-client-email').value;
-            let tierStr = document.getElementById('edit-client-tier').value; client.tier = tierStr.split(' ')[0] + (tierStr.includes('Tier 2') ? ' Hybrid' : tierStr.includes('Tier 3') ? ' VIP' : '');
-            client.tierPrice = tierStr.includes("Tier 1") ? 79 : tierStr.includes("Tier 2") ? 199 : 349; client.billingDay = parseInt(document.getElementById('edit-client-billing').value);
+            let tierParts = document.getElementById('edit-client-tier').value.split('|'); client.tier = tierParts[0]; client.tierPrice = parseInt(tierParts[1]); client.billingDay = parseInt(document.getElementById('edit-client-billing').value);
+            saveAppState();
             closeModal('edit-client-modal'); openClientDetail(selectedClientId); 
         }
 
@@ -1066,10 +1135,174 @@
             const text = document.getElementById(inputId).value; if(!text) return; let now = new Date(); let timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             if(currentUserId && !currentUserId.includes('coach_') && !isMasterAdmin) { const client = clients.find(c => c.id === currentUserId); client.messages.push({ sender: client.id, text: text, time: timeStr }); } 
             else { const client = clients.find(c => c.id === activeChatUserId); if(client) client.messages.push({ sender: currentUserId, text: text, time: timeStr }); }
-            document.getElementById(inputId).value = ''; renderMessages();
+            document.getElementById(inputId).value = ''; saveAppState(); renderMessages();
         }
-        function sendNudge() { alert("Nudge notification sent to client's device."); }
-        function openOnboardingModal() { alert("Simulating external lead generation link copied to clipboard."); }
+        function sendNudge() {
+            const client = clients.find(c => c.id === selectedClientId);
+            if(client) {
+                client.messages.push({ sender: currentUserId || 'admin', text: 'Quick nudge from your coach: check today\'s plan and send an update when you can.', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+                saveAppState();
+            }
+            alert("Nudge queued in the client's message thread.");
+        }
+        function openOnboardingModal() { document.getElementById('onboarding-modal').classList.remove('hidden'); }
+        function prefillOnboardingTier(tierValue) {
+            document.getElementById('new-client-tier').value = tierValue;
+            openOnboardingModal();
+        }
+        function copyLeadLink() {
+            const leadText = `${location.href.split('#')[0]}#apply`;
+            if(navigator.clipboard) navigator.clipboard.writeText(leadText);
+            alert(`Client intake link ready: ${leadText}`);
+        }
+        function createDefaultClient(data) {
+            const today = formatDate(currentDate);
+            return {
+                id: 'c_' + Date.now(), coachId: data.coachId || 'admin', name: data.name, email: data.email.toLowerCase(), password: data.password || 'password123',
+                tier: data.tier || 'Ascent Hybrid', tierPrice: data.tierPrice || 199, streak: 0, adherence: 75, billingDay: data.billingDay || 1,
+                isFirstLogin: true, profilePic: defaultSmiley, age: data.age || '', weight: data.weight || 180, height: data.height || '', bf: data.bf || '', goal: data.goal || 'Build Muscle',
+                events: { [today]: [{ type: 'checkin', title: 'Initial Check-In' }] },
+                macroTargets: { cal: 2200, pro: 170, carb: 220, fat: 70 },
+                dietPlan: recipeLibrary.slice(0, 2).map((r, idx) => ({ id: 'd_' + Date.now() + '_' + idx, recipeId: r.id, eaten: false, notes: '', photo: null })),
+                waterData: { val: 0, unit: 'oz' },
+                messages: [{ sender: data.coachId || 'admin', text: 'Welcome to Mountaintop Athletics. Fill out your first check-in and message me with any questions.', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }],
+                workoutData: {}, progressHistory: data.weight ? [{ date: today, weight: data.weight, bf: data.bf || 0 }] : [], parq: { notes: data.notes || '' }, personalProtocols: [], wods: []
+            };
+        }
+        function createClientFromOnboarding(e) {
+            e.preventDefault();
+            const tierParts = document.getElementById('new-client-tier').value.split('|');
+            const newClient = createDefaultClient({
+                coachId: 'admin',
+                name: document.getElementById('new-client-name').value.trim(),
+                email: document.getElementById('new-client-email').value.trim(),
+                password: document.getElementById('new-client-password').value.trim(),
+                tier: tierParts[0],
+                tierPrice: parseInt(tierParts[1]),
+                billingDay: parseInt(document.getElementById('new-client-billing').value),
+                goal: document.getElementById('new-client-goal').value.trim(),
+                weight: parseFloat(document.getElementById('new-client-weight').value) || 180,
+                height: document.getElementById('new-client-height').value.trim(),
+                notes: document.getElementById('new-client-notes').value.trim()
+            });
+            clients.push(newClient); selectedClientId = newClient.id; saveAppState(); closeModal('onboarding-modal'); renderCoachOverview(); openClientDetail(newClient.id);
+        }
+        function finishClientSetup(e) {
+            e.preventDefault();
+            const client = clients.find(c => c.id === currentUserId);
+            if(!client) return;
+            const pass = document.getElementById('setup-password').value;
+            if(pass) client.password = pass;
+            if(tempImageUpload) client.profilePic = tempImageUpload;
+            client.isFirstLogin = false;
+            saveAppState(); closeModal('client-setup-modal'); document.getElementById('nav-actions').classList.remove('hidden'); goHome();
+        }
+
+        function renderChart() {
+            const canvas = document.getElementById('revenueChart');
+            if(!canvas) return;
+            const months = parseInt(document.getElementById('chart-timeframe')?.value || 12);
+            const activeRevenue = clients.reduce((sum, c) => sum + (c.tierPrice || 0), 0);
+            const labels = chartLabels.slice(-months);
+            const data = chartData.slice(-months).map((v, idx, arr) => idx === arr.length - 1 ? Math.max(v, activeRevenue) : v);
+            if(revChartInstance) revChartInstance.destroy();
+            revChartInstance = new Chart(canvas.getContext('2d'), {
+                type: 'line',
+                data: { labels, datasets: [{ label: 'Monthly Revenue', data, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.18)', borderWidth: 4, fill: true, tension: 0.35, pointRadius: 5, pointBackgroundColor: '#fff' }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#e2e8f0', font: { family: 'Outfit', weight: 'bold' } } } }, scales: { y: { ticks: { color: '#94a3b8', callback: v => '$' + v }, grid: { color: 'rgba(255,255,255,0.08)' } }, x: { ticks: { color: '#94a3b8' }, grid: { display: false } } } }
+            });
+            const tiers = clients.reduce((acc, c) => { acc[c.tier] = (acc[c.tier] || 0) + 1; return acc; }, {});
+            document.getElementById('revenue-sources-breakdown').innerHTML = Object.entries(tiers).map(([tier, count]) => `<li class="bg-slate-900 border-2 border-slate-800 p-4 rounded-xl flex justify-between"><span class="font-black text-white">${tier}</span><span class="text-emerald-400 font-black">${count}</span></li>`).join('') || '<li class="text-slate-500 font-bold">No active memberships yet.</li>';
+        }
+
+        function renderReminderLibrary() {
+            let listHTML = '';
+            reminderLibrary.forEach(r => {
+                listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center hover:border-rose-500 transition-colors group shadow-lg"><p class="font-black text-white text-lg drop-shadow">${r.text}</p><div class="opacity-0 group-hover:opacity-100 flex space-x-3 transition-opacity"><button onclick="editReminder('${r.id}')" class="text-white text-xs font-black px-4 py-2 bg-sky-600 border-2 border-sky-400 border-b-4 rounded-xl uppercase">Edit</button><button onclick="deleteReminder('${r.id}')" class="text-white text-xs font-black px-4 py-2 bg-rose-600 border-2 border-rose-400 border-b-4 rounded-xl uppercase">Delete</button></div></div>`;
+            });
+            document.getElementById('saved-reminders-list').innerHTML = listHTML || '<p class="text-slate-500 italic">No reminders saved yet.</p>';
+        }
+        function saveReminder() {
+            const text = document.getElementById('reminder-text').value.trim();
+            if(!text) return;
+            if(editingReminderId) {
+                const reminder = reminderLibrary.find(r => r.id === editingReminderId);
+                if(reminder) reminder.text = text;
+                cancelReminderEdit();
+            } else {
+                reminderLibrary.unshift({ id: 'rem_' + Date.now(), text });
+                document.getElementById('reminder-text').value = '';
+            }
+            saveAppState(); renderReminderLibrary();
+        }
+        function editReminder(id) {
+            const reminder = reminderLibrary.find(r => r.id === id);
+            if(!reminder) return;
+            editingReminderId = id; document.getElementById('reminder-text').value = reminder.text; document.getElementById('reminder-header-title').innerText = 'Editing Reminder'; document.getElementById('btn-cancel-reminder-edit').classList.remove('hidden');
+        }
+        function cancelReminderEdit() {
+            editingReminderId = null; document.getElementById('reminder-text').value = ''; document.getElementById('reminder-header-title').innerText = 'Create New Reminder'; document.getElementById('btn-cancel-reminder-edit').classList.add('hidden');
+        }
+        function deleteReminder(id) { reminderLibrary = reminderLibrary.filter(r => r.id !== id); saveAppState(); renderReminderLibrary(); }
+
+        function openCalendarEventModal(dateStr) {
+            selectedDateString = dateStr;
+            document.getElementById('calendar-event-date').innerText = dateStr;
+            updateCalendarEventOptions();
+            document.getElementById('calendar-event-modal').classList.remove('hidden');
+        }
+        function updateCalendarEventOptions() {
+            const type = document.getElementById('calendar-event-type').value;
+            const client = clients.find(c => c.id === selectedClientId);
+            const protocols = [...savedProtocols, ...(client?.personalProtocols || []), ...(client?.wods || [])];
+            document.getElementById('calendar-workout-wrap').classList.toggle('hidden', type !== 'workout');
+            document.getElementById('calendar-title-wrap').classList.toggle('hidden', type === 'workout');
+            document.getElementById('calendar-protocol-select').innerHTML = protocols.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+            if(type === 'reminder') document.getElementById('calendar-event-title').value = reminderLibrary[0]?.text || '';
+            if(type === 'checkin') document.getElementById('calendar-event-title').value = 'Weekly Check-In';
+        }
+        function saveCalendarEvent(e) {
+            e.preventDefault();
+            const client = clients.find(c => c.id === selectedClientId);
+            if(!client || !selectedDateString) return;
+            const type = document.getElementById('calendar-event-type').value;
+            if(!client.events[selectedDateString]) client.events[selectedDateString] = [];
+            if(type === 'workout') {
+                const protocolId = document.getElementById('calendar-protocol-select').value;
+                if(!protocolId) return alert('Create a protocol before scheduling workouts.');
+                client.events[selectedDateString].push({ type, protocolId });
+            } else {
+                client.events[selectedDateString].push({ type, title: document.getElementById('calendar-event-title').value || type });
+            }
+            saveAppState(); closeModal('calendar-event-modal'); renderCoachCalendar();
+        }
+
+        let restTimerInterval = null; let restTimerRemaining = 0;
+        function toggleTimerModal() { document.getElementById('timer-modal').classList.toggle('hidden'); }
+        function startRestTimer(seconds) {
+            clearInterval(restTimerInterval); restTimerRemaining = seconds; updateRestTimerDisplay();
+            document.getElementById('btn-cancel-timer').classList.remove('hidden');
+            restTimerInterval = setInterval(() => {
+                restTimerRemaining -= 1; updateRestTimerDisplay();
+                if(restTimerRemaining <= 0) { cancelRestTimer(); alert('Rest timer complete.'); }
+            }, 1000);
+        }
+        function updateRestTimerDisplay() {
+            const m = Math.floor(restTimerRemaining / 60); const s = restTimerRemaining % 60;
+            document.getElementById('timer-display').innerText = `${m<10?'0':''}${m}:${s<10?'0':''}${s}`;
+        }
+        function cancelRestTimer() {
+            clearInterval(restTimerInterval); restTimerInterval = null; restTimerRemaining = 0; updateRestTimerDisplay(); document.getElementById('btn-cancel-timer').classList.add('hidden');
+        }
+
+        function autoSuggestMeals() {
+            const client = clients.find(c => c.id === selectedClientId);
+            if(!client) return;
+            const target = client.macroTargets;
+            const sorted = recipeLibrary.filter(r => r.pro >= 25).sort((a, b) => Math.abs((a.cal * 3) - target.cal) - Math.abs((b.cal * 3) - target.cal));
+            client.dietPlan = sorted.slice(0, 4).map((r, idx) => ({ id: 'd_auto_' + Date.now() + '_' + idx, recipeId: r.id, eaten: false, notes: '', photo: null }));
+            saveAppState(); renderClientNutritionEditor();
+        }
 
         function filterExercises() {
             const query = document.getElementById('ex-search').value.toLowerCase(); const select = document.getElementById('builder-ex-select'); let optionsHTML = '<option value="" disabled selected>-- Select Movement --</option>';
@@ -1087,8 +1320,8 @@
         function removeBuilderEx(tempId) { builderStaging = builderStaging.filter(b => b.tempId !== tempId); renderBuilderStaging(); }
         function renderBuilderStaging() { let listHTML = ''; if(builderStaging.length > 0) { builderStaging.forEach((b, index) => { const ex = exerciseLibrary.find(e => e.id === b.exId); listHTML += `<div class="bg-slate-900 p-5 rounded-2xl flex justify-between items-center border-4 border-slate-800 shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">${index+1}.</span>${ex.name}</p><input type="text" value="${b.customReps}" onchange="updateStagingReps(${b.tempId}, this.value)" class="mt-3 text-emerald-400 font-black text-sm p-3 rounded-xl w-40 bg-black/50 border border-slate-700"></div><button onclick="removeBuilderEx(${b.tempId})" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; }); } document.getElementById('builder-staging-list').innerHTML = listHTML; }
         function updateStagingReps(tId, val) { let i = builderStaging.find(b => b.tempId === tId); if(i) i.customReps = val; }
-        function saveNewProtocol() { const name = document.getElementById('builder-protocol-name').value; if(!name || builderStaging.length === 0) return; if (editingProtocolId) { const protocol = savedProtocols.find(p => p.id === editingProtocolId); protocol.name = name; protocol.exercises = builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelEdit(); } else { savedProtocols.push({ id: 'p_' + Date.now(), name: name, exercises: builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('builder-protocol-name').value = ''; builderStaging = []; } renderProtocolLibrary(); }
-        function deleteProtocol(pId) { savedProtocols = savedProtocols.filter(p => p.id !== pId); renderProtocolLibrary(); }
+        function saveNewProtocol() { const name = document.getElementById('builder-protocol-name').value; if(!name || builderStaging.length === 0) return; if (editingProtocolId) { const protocol = savedProtocols.find(p => p.id === editingProtocolId); protocol.name = name; protocol.exercises = builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelEdit(); } else { savedProtocols.push({ id: 'p_' + Date.now(), name: name, exercises: builderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('builder-protocol-name').value = ''; builderStaging = []; } saveAppState(); renderProtocolLibrary(); }
+        function deleteProtocol(pId) { savedProtocols = savedProtocols.filter(p => p.id !== pId); saveAppState(); renderProtocolLibrary(); }
 
         function filterClientExercises() {
             const query = document.getElementById('client-ex-search').value.toLowerCase(); const select = document.getElementById('client-builder-ex-select'); let optionsHTML = '<option value="" disabled selected>-- Select Movement --</option>';
@@ -1107,8 +1340,8 @@
         function removeClientBuilderEx(tempId) { clientBuilderStaging = clientBuilderStaging.filter(b => b.tempId !== tempId); renderClientBuilderStaging(); }
         function renderClientBuilderStaging() { let listHTML = ''; clientBuilderStaging.forEach((b, index) => { const ex = exerciseLibrary.find(e => e.id === b.exId); listHTML += `<div class="bg-slate-900 p-5 rounded-2xl flex justify-between items-center border-4 border-slate-800 shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">${index+1}.</span>${ex.name}</p><input type="text" value="${b.customReps}" onchange="updateClientStagingReps(${b.tempId}, this.value)" class="mt-3 text-sky-400 font-black text-sm p-3 rounded-xl w-40 bg-black/50 border border-slate-700"></div><button onclick="removeClientBuilderEx(${b.tempId})" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; }); document.getElementById('client-builder-staging-list').innerHTML = listHTML; }
         function updateClientStagingReps(tId, val) { let i = clientBuilderStaging.find(b => b.tempId === tId); if(i) i.customReps = val; }
-        function saveClientProtocol() { const name = document.getElementById('client-builder-protocol-name').value; if(!name || clientBuilderStaging.length === 0) return; const client = clients.find(c => c.id === selectedClientId); if(!client.personalProtocols) client.personalProtocols = []; if (editingClientProtocolId) { const protocol = client.personalProtocols.find(p => p.id === editingClientProtocolId); protocol.name = name; protocol.exercises = clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelClientEdit(); } else { client.personalProtocols.push({ id: 'cp_' + Date.now(), name: name, exercises: clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('client-builder-protocol-name').value = ''; clientBuilderStaging = []; } renderClientProtocolLibrary(); }
-        function deleteClientProtocol(pId) { const client = clients.find(c => c.id === selectedClientId); client.personalProtocols = client.personalProtocols.filter(p => p.id !== pId); renderClientProtocolLibrary(); }
+        function saveClientProtocol() { const name = document.getElementById('client-builder-protocol-name').value; if(!name || clientBuilderStaging.length === 0) return; const client = clients.find(c => c.id === selectedClientId); if(!client.personalProtocols) client.personalProtocols = []; if (editingClientProtocolId) { const protocol = client.personalProtocols.find(p => p.id === editingClientProtocolId); protocol.name = name; protocol.exercises = clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })); cancelClientEdit(); } else { client.personalProtocols.push({ id: 'cp_' + Date.now(), name: name, exercises: clientBuilderStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) }); document.getElementById('client-builder-protocol-name').value = ''; clientBuilderStaging = []; } saveAppState(); renderClientProtocolLibrary(); }
+        function deleteClientProtocol(pId) { const client = clients.find(c => c.id === selectedClientId); client.personalProtocols = client.personalProtocols.filter(p => p.id !== pId); saveAppState(); renderClientProtocolLibrary(); }
 
         function filterRecipes() {
             const query = (document.getElementById('kitchen-master-search')?.value || '').toLowerCase(); let listHTML = ''; let filtered = recipeLibrary.filter(r => r.name.toLowerCase().includes(query) || r.desc.toLowerCase().includes(query) || (r.tags && r.tags.some(t => t.toLowerCase().includes(query))));
@@ -1116,10 +1349,10 @@
             document.getElementById('saved-recipes-list').innerHTML = listHTML;
         }
         function renderRecipeLibrary() { filterRecipes(); }
-        function saveRecipe() { const name = document.getElementById('recipe-name').value; const cal = parseInt(document.getElementById('recipe-cal').value); const pro = parseInt(document.getElementById('recipe-pro').value); const carb = parseInt(document.getElementById('recipe-carb').value); const fat = parseInt(document.getElementById('recipe-fat').value); const desc = document.getElementById('recipe-desc').value; if(!name || !cal) return; if (editingRecipeId) { const recipe = recipeLibrary.find(r => r.id === editingRecipeId); recipe.name = name; recipe.cal = cal; recipe.pro = pro; recipe.carb = carb; recipe.fat = fat; recipe.desc = desc; cancelRecipeEdit(); } else { recipeLibrary.unshift({ id: 'r_' + Date.now(), name, cal, pro, carb, fat, desc, tags: [] }); document.getElementById('recipe-name').value=''; document.getElementById('recipe-cal').value=''; document.getElementById('recipe-pro').value=''; document.getElementById('recipe-carb').value=''; document.getElementById('recipe-fat').value=''; document.getElementById('recipe-desc').value=''; } renderRecipeLibrary(); }
+        function saveRecipe() { const name = document.getElementById('recipe-name').value; const cal = parseInt(document.getElementById('recipe-cal').value); const pro = parseInt(document.getElementById('recipe-pro').value); const carb = parseInt(document.getElementById('recipe-carb').value); const fat = parseInt(document.getElementById('recipe-fat').value); const desc = document.getElementById('recipe-desc').value; if(!name || !cal) return; if (editingRecipeId) { const recipe = recipeLibrary.find(r => r.id === editingRecipeId); recipe.name = name; recipe.cal = cal; recipe.pro = pro; recipe.carb = carb; recipe.fat = fat; recipe.desc = desc; cancelRecipeEdit(); } else { recipeLibrary.unshift({ id: 'r_' + Date.now(), name, cal, pro, carb, fat, desc, tags: [] }); document.getElementById('recipe-name').value=''; document.getElementById('recipe-cal').value=''; document.getElementById('recipe-pro').value=''; document.getElementById('recipe-carb').value=''; document.getElementById('recipe-fat').value=''; document.getElementById('recipe-desc').value=''; } saveAppState(); renderRecipeLibrary(); }
         function editRecipe(rId) { editingRecipeId = rId; const r = recipeLibrary.find(x => x.id === rId); document.getElementById('recipe-name').value = r.name; document.getElementById('recipe-cal').value = r.cal; document.getElementById('recipe-pro').value = r.pro; document.getElementById('recipe-carb').value = r.carb; document.getElementById('recipe-fat').value = r.fat; document.getElementById('recipe-desc').value = r.desc; document.getElementById('recipe-header-title').innerText = "Editing Recipe"; document.getElementById('btn-cancel-recipe-edit').classList.remove('hidden'); }
         function cancelRecipeEdit() { editingRecipeId = null; document.getElementById('recipe-name').value=''; document.getElementById('recipe-cal').value=''; document.getElementById('recipe-pro').value=''; document.getElementById('recipe-carb').value=''; document.getElementById('recipe-fat').value=''; document.getElementById('recipe-desc').value=''; document.getElementById('recipe-header-title').innerText = "Create New Recipe"; document.getElementById('btn-cancel-recipe-edit').classList.add('hidden'); }
-        function deleteRecipe(rId) { recipeLibrary = recipeLibrary.filter(x => x.id !== rId); renderRecipeLibrary(); }
+        function deleteRecipe(rId) { recipeLibrary = recipeLibrary.filter(x => x.id !== rId); saveAppState(); renderRecipeLibrary(); }
 
         function changeMonth(offset) { displayedMonth.setMonth(displayedMonth.getMonth() + offset); renderCoachCalendar(); }
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -1127,7 +1360,7 @@
             if(!selectedClientId) return; const client = clients.find(c => c.id === selectedClientId); document.getElementById('calendar-month-year').innerText = `${monthNames[displayedMonth.getMonth()]} ${displayedMonth.getFullYear()}`; let gridHTML = ''; let firstDay = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1).getDay(); let daysInMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() + 1, 0).getDate();
             for (let i = 0; i < firstDay; i++) { gridHTML += `<div class="p-2 border-4 border-slate-800 bg-slate-900/50 rounded-2xl min-h-[100px]"></div>`; }
             for (let d = 1; d <= daysInMonth; d++) {
-                let checkDate = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), d); let dateStr = formatDate(checkDate); let isToday = dateStr === formatDate(currentDate); let dayHTML = `<div class="cursor-pointer p-2 border-4 border-slate-800 bg-slate-900 rounded-2xl min-h-[100px] hover:border-emerald-500 transition-all group relative shadow-lg ${isToday ? 'ring-4 ring-emerald-500 bg-emerald-950/40' : ''}"><div class="text-right text-sm font-black text-slate-500 mb-2 group-hover:text-slate-300 transition-colors">${d}</div>`;
+                let checkDate = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), d); let dateStr = formatDate(checkDate); let isToday = dateStr === formatDate(currentDate); let dayHTML = `<div onclick="openCalendarEventModal('${dateStr}')" class="cursor-pointer p-2 border-4 border-slate-800 bg-slate-900 rounded-2xl min-h-[100px] hover:border-emerald-500 transition-all group relative shadow-lg ${isToday ? 'ring-4 ring-emerald-500 bg-emerald-950/40' : ''}"><div class="text-right text-sm font-black text-slate-500 mb-2 group-hover:text-slate-300 transition-colors">${d}</div>`;
                 if(client.events[dateStr]) { client.events[dateStr].forEach(ev => { let color = ev.type === 'workout' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : ev.type === 'cardio' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/50' : 'bg-amber-500/20 text-amber-400 border border-amber-500/50'; if(ev.type === 'reminder') color = 'bg-rose-500/20 text-rose-400 border border-rose-500/50'; let title = ev.type === 'workout' ? ((savedProtocols.find(p=>p.id===ev.protocolId) || client.personalProtocols?.find(p=>p.id===ev.protocolId) || client.wods?.find(p=>p.id===ev.protocolId))?.name || 'Protocol') : ev.title; dayHTML += `<div class="text-[10px] truncate px-2 py-1 rounded-md ${color} mb-1.5 leading-tight font-black shadow-sm drop-shadow backdrop-blur-sm uppercase tracking-wider">${title}</div>`; }); } dayHTML += `</div>`; gridHTML += dayHTML;
             } document.getElementById('coach-calendar-grid').innerHTML = gridHTML;
         }
@@ -1169,9 +1402,9 @@
             client.dietPlan.forEach((meal, i) => { const r = recipeLibrary.find(x => x.id === meal.recipeId); if(r) { totalCal += r.cal; totalPro += r.pro; totalCarb += r.carb; totalFat += r.fat; listHTML += `<div class="bg-slate-900 border-4 border-slate-800 p-5 rounded-2xl flex justify-between items-center group shadow-md"><div class="flex-1"><p class="font-black text-white text-lg drop-shadow truncate w-48"><span class="text-slate-500 mr-3">Meal ${i+1}</span>${r.name}</p><p class="text-xs text-amber-400 mt-2 uppercase font-black tracking-widest bg-amber-500/10 inline-block px-3 py-1 rounded-lg border border-amber-500/30">${r.cal} cal | ${r.pro}P / ${r.carb}C / ${r.fat}F</p></div><button onclick="removeMealFromClient('${meal.id}')" class="text-slate-500 hover:text-rose-500 px-4 font-black text-3xl transition-colors">&times;</button></div>`; } });
             listHTML += `<div class="mt-6 pt-6 border-t-4 border-slate-800 flex justify-between text-sm font-black uppercase tracking-widest"><span class="text-slate-400">Total Planned:</span><span class="${totalCal > client.macroTargets.cal ? 'text-rose-400' : 'text-emerald-400'} drop-shadow">${totalCal} Cal / ${totalPro}P / ${totalCarb}C / ${totalFat}F</span></div>`; document.getElementById('detail-client-diet-list').innerHTML = listHTML;
         }
-        function updateClientMacros() { const client = clients.find(c => c.id === selectedClientId); client.macroTargets.cal = parseInt(document.getElementById('tgt-cal').value); client.macroTargets.pro = parseInt(document.getElementById('tgt-pro').value); client.macroTargets.carb = parseInt(document.getElementById('tgt-carb').value); client.macroTargets.fat = parseInt(document.getElementById('tgt-fat').value); renderClientNutritionEditor(); }
-        function addMealToClient() { const rId = document.getElementById('diet-recipe-select').value; if(!rId) return; const client = clients.find(c => c.id === selectedClientId); client.dietPlan.push({ id: 'd_' + Date.now(), recipeId: rId, eaten: false }); renderClientNutritionEditor(); }
-        function removeMealFromClient(dId) { const client = clients.find(c => c.id === selectedClientId); client.dietPlan = client.dietPlan.filter(m => m.id !== dId); renderClientNutritionEditor(); }
+        function updateClientMacros() { const client = clients.find(c => c.id === selectedClientId); client.macroTargets.cal = parseInt(document.getElementById('tgt-cal').value); client.macroTargets.pro = parseInt(document.getElementById('tgt-pro').value); client.macroTargets.carb = parseInt(document.getElementById('tgt-carb').value); client.macroTargets.fat = parseInt(document.getElementById('tgt-fat').value); saveAppState(); renderClientNutritionEditor(); }
+        function addMealToClient() { const rId = document.getElementById('diet-recipe-select').value; if(!rId) return; const client = clients.find(c => c.id === selectedClientId); client.dietPlan.push({ id: 'd_' + Date.now(), recipeId: rId, eaten: false }); saveAppState(); renderClientNutritionEditor(); }
+        function removeMealFromClient(dId) { const client = clients.find(c => c.id === selectedClientId); client.dietPlan = client.dietPlan.filter(m => m.id !== dId); saveAppState(); renderClientNutritionEditor(); }
 
         function renderClientPortalNutrition() {
             const client = clients.find(c => c.id === currentUserId); let cCal=0, cPro=0, cCarb=0, cFat=0;
@@ -1190,12 +1423,12 @@
             document.getElementById('client-diet-list').innerHTML = listHTML;
         }
 
-        function toggleClientMeal(mId) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.eaten = !meal.eaten; renderClientPortalNutrition(); }
-        function toggleWaterUnit() { const client = clients.find(c => c.id === currentUserId); if(client.waterData.unit === 'oz') { client.waterData.unit = 'ml'; client.waterData.val = Math.round(client.waterData.val * 29.57); } else { client.waterData.unit = 'oz'; client.waterData.val = Math.round(client.waterData.val / 29.57); } renderClientPortalNutrition(); }
-        function logWater(amount, reset = false) { const client = clients.find(c => c.id === currentUserId); if(reset) { client.waterData.val = 0; } else { let addVal = amount; if(client.waterData.unit === 'ml') addVal = amount * 30; client.waterData.val += addVal; } renderClientPortalNutrition(); }
-        function logCustomWater() { const client = clients.find(c => c.id === currentUserId); const amt = parseInt(document.getElementById('custom-water-amt').value); if(amt) { client.waterData.val += amt; document.getElementById('custom-water-amt').value = ''; renderClientPortalNutrition(); } }
-        function uploadMealPhoto(event, mId) { const file = event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = function(e) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.photo = e.target.result; renderClientPortalNutrition(); }; reader.readAsDataURL(file); } }
-        function updateMealNote(mId, val) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.notes = val; }
+        function toggleClientMeal(mId) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.eaten = !meal.eaten; saveAppState(); renderClientPortalNutrition(); }
+        function toggleWaterUnit() { const client = clients.find(c => c.id === currentUserId); if(client.waterData.unit === 'oz') { client.waterData.unit = 'ml'; client.waterData.val = Math.round(client.waterData.val * 29.57); } else { client.waterData.unit = 'oz'; client.waterData.val = Math.round(client.waterData.val / 29.57); } saveAppState(); renderClientPortalNutrition(); }
+        function logWater(amount, reset = false) { const client = clients.find(c => c.id === currentUserId); if(reset) { client.waterData.val = 0; } else { let addVal = amount; if(client.waterData.unit === 'ml') addVal = amount * 30; client.waterData.val += addVal; } saveAppState(); renderClientPortalNutrition(); }
+        function logCustomWater() { const client = clients.find(c => c.id === currentUserId); const amt = parseInt(document.getElementById('custom-water-amt').value); if(amt) { client.waterData.val += amt; document.getElementById('custom-water-amt').value = ''; saveAppState(); renderClientPortalNutrition(); } }
+        function uploadMealPhoto(event, mId) { const file = event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = function(e) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.photo = e.target.result; saveAppState(); renderClientPortalNutrition(); }; reader.readAsDataURL(file); } }
+        function updateMealNote(mId, val) { const client = clients.find(c => c.id === currentUserId); const meal = client.dietPlan.find(m => m.id === mId); meal.notes = val; saveAppState(); }
 
         function renderClientProgress() {
             const client = clients.find(c => c.id === currentUserId);
@@ -1207,6 +1440,7 @@
         function logProgress() {
             const client = clients.find(c => c.id === currentUserId); const w = parseFloat(document.getElementById('prog-weight').value); const bf = parseFloat(document.getElementById('prog-bf').value); const h = document.getElementById('prog-height').value;
             if(h) client.height = h; if(w || bf) { client.progressHistory.push({ date: formatDate(new Date()), weight: w || client.weight, bf: bf || client.bf }); if(w) client.weight = w; if(bf) client.bf = bf; }
+            saveAppState();
             document.getElementById('prog-weight').value = ''; document.getElementById('prog-bf').value = ''; renderClientProgress();
         }
 
@@ -1236,7 +1470,7 @@
 
         function toggleSetStyle(chk, rowId) { const row = document.getElementById(rowId); if(chk.checked) row.classList.add('set-row-checked'); else row.classList.remove('set-row-checked'); }
         function toggleSetUnit(btn) { const input = btn.previousElementSibling; let val = parseFloat(input.value); if(btn.dataset.unit === 'lbs') { btn.dataset.unit = 'kg'; btn.innerText = 'kg'; btn.className = "text-[10px] font-black text-amber-400 uppercase bg-amber-500/20 px-2 py-1.5 rounded-lg border border-amber-500/30"; if(val) input.value = (val / 2.20462).toFixed(1); } else { btn.dataset.unit = 'lbs'; btn.innerText = 'lbs'; btn.className = "text-[10px] font-black text-sky-400 uppercase bg-sky-500/20 px-2 py-1.5 rounded-lg border border-sky-500/30"; if(val) input.value = (val * 2.20462).toFixed(1); } }
-        function saveWorkoutNote(exId, val) { const client = clients.find(c => c.id === currentUserId); client.workoutData[`note_${exId}`] = val; }
+        function saveWorkoutNote(exId, val) { const client = clients.find(c => c.id === currentUserId); client.workoutData[`note_${exId}`] = val; saveAppState(); }
 
         let currentTotalVolume = 0;
         function endActiveWorkout() { clearInterval(globalTimerInterval); timerElementCache = null; document.getElementById('workout-rpe-modal').classList.remove('hidden'); }
@@ -1273,8 +1507,8 @@
             if(Math.random() > 0.5) { prHTML += `<div class="bg-sky-500/20 border-2 border-sky-500 p-4 rounded-xl flex items-center justify-center mt-4 shadow-[0_0_20px_rgba(14,165,233,0.3)]"><span class="text-3xl mr-3">⚡</span><div><p class="text-sky-400 font-black uppercase tracking-widest text-sm">New Rep PR: Squat</p><p class="text-white font-bold text-xs mt-1">Lifted heavier than last week.</p></div></div>`; }
             document.getElementById('summary-prs').innerHTML = prHTML; document.getElementById('client-workout').value = 100; document.getElementById('workout-val').innerText = '100%';
         }
-        function closeSummary() { document.getElementById('workout-summary-view').classList.add('hidden'); document.getElementById('global-nav').classList.remove('hidden'); document.getElementById('main-container').classList.remove('hidden'); const client = clients.find(c => c.id === currentUserId); client.streak += 1; navigateTo('client-view'); switchClientPortalTab('training'); }
-        function submitClientData() { alert(`Ascent Logged! Check-in securely sent to coach.`); const client = clients.find(c => c.id === currentUserId); client.streak += 1; renderClientPortal(); }
+        function closeSummary() { document.getElementById('workout-summary-view').classList.add('hidden'); document.getElementById('global-nav').classList.remove('hidden'); document.getElementById('main-container').classList.remove('hidden'); const client = clients.find(c => c.id === currentUserId); client.streak += 1; client.adherence = Math.min(100, client.adherence + 2); saveAppState(); navigateTo('client-view'); switchClientPortalTab('training'); }
+        function submitClientData() { alert(`Ascent Logged! Check-in securely sent to coach.`); const client = clients.find(c => c.id === currentUserId); client.streak += 1; client.adherence = Math.min(100, Math.round((client.adherence + parseInt(document.getElementById('client-workout').value || 0)) / 2)); saveAppState(); renderClientPortal(); }
 
         // --- WOD BUILDER MODAL LOGIC ---
         function openWodBuilder(dateOverride) { wodTargetDate = dateOverride || formatDate(currentDate); wodStaging = []; document.getElementById('wod-target-date').innerText = wodTargetDate; filterWodExercises(); renderWodStaging(); document.getElementById('wod-builder-modal').classList.remove('hidden'); }
@@ -1291,8 +1525,12 @@
             if(wodStaging.length === 0) return alert("Add at least one exercise."); const client = clients.find(c => c.id === (isMasterAdmin ? selectedClientId : currentUserId));
             if(!client.wods) client.wods = []; const wodId = 'wod_' + Date.now(); client.wods.push({ id: wodId, name: 'WOD - ' + wodTargetDate, exercises: wodStaging.map(b => ({ exId: b.exId, customReps: b.customReps })) });
             if(!client.events[wodTargetDate]) client.events[wodTargetDate] = []; client.events[wodTargetDate].push({ type: 'workout', protocolId: wodId });
-            closeModal('wod-builder-modal'); if(isMasterAdmin || currentUserId.includes('coach_')) renderCoachCalendar(); else { renderClientPortal(); switchClientPortalTab('training'); }
+            saveAppState(); closeModal('wod-builder-modal'); if(isMasterAdmin || currentUserId.includes('coach_')) renderCoachCalendar(); else { renderClientPortal(); switchClientPortalTab('training'); }
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(location.hash === '#apply') openOnboardingModal();
+        });
 
     </script>
 </body>
